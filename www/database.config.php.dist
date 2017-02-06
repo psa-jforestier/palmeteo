@@ -1,0 +1,8 @@
+<?php
+/**
+ ** Copy this file as "database.config.php" with values for your environment
+ **/
+    @define('DB_USER','dbuser');
+    @define('DB_PASS','dbassword');
+    @define('DB_HOST','dbhostname');
+    @define('DB_DBASE','dbname');
