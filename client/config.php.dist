@@ -1,0 +1,6 @@
+<?php
+/**
+ ** Copy this file as "config.php" with values for your environment
+ **/
+
+$CONFIG['serverEndpoint'] = 'http://weather.server.com/upload.php';
