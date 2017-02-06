@@ -1,0 +1,45 @@
+#!/bin/ksh
+
+# Temporary folder used to store copied file. If modified, change also in the pastef script.
+tmp=~/.copypastef
+
+if [[ "$1" == "" ]]; then
+cat << EOF
+copyf / pastef: a couple of scripts to handle easy copy / paste of files
+
+copyf usage: 
+    copyf [file]
+    file: File to copy in temporary folder
+    no parameters: Print this help, last copied file, and disk usage of the temporary folder used by copyf/pastef
+
+pastef usage:
+    pastef [file]
+    file: File to paste from temporary folder to current folder
+    no parameters: Paste last copied file
+
+Temporary folder: $tmp
+Last copied file: $(cat $tmp/.copyf.last)
+              at: $(stat $tmp/.copyf.last | grep Modify | cut -c 9-27)
+Disk usage of the temporary folder:
+EOF
+    du -sch $tmp | grep total
+else
+    if [[ -d $1 ]]; then
+        echo "copyf: invalid file type." >&2
+        echo "copyf/pastef can not work with directory. Only file is supported. "  >&2
+    else
+        mkdir $tmp 2>/dev/null
+        TO=$(basename $1)
+        cp $1 $tmp/$TO
+        if [[ $? != 0 ]]; then
+            echo "copyf: unable to copy file $1" >&2
+            exit 1
+        else
+            if [[ $1 != $TO ]]; then
+                echo "Warning: file $1 is a deep folder. Use \"pastef $TO\" to paste the file."
+            fi
+            echo "$TO" > $tmp/.copyf.last
+            echo File $1 copied to local temp dir
+        fi
+    fi
+fi

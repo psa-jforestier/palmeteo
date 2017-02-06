@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ $# -ne 1 ]
+then
+        echo "Usage: $0 file.ext"
+        echo "Search in all tgz files of current dirs and subdir the file.ext"
+        echo "$0 Back.php"
+        exit 1
+fi
+echo "== Search for files $1 in all tgz"
+
+for f in $(find . -name "*.tgz"); do tar -ztvf  $f | grep "$1" && echo $f && echo ; done
+

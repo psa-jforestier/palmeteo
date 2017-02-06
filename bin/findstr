@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ $# -ne 2 ]
+then
+	echo "Usage: $0 string extension"
+	echo "Search all occurences of string in files with extension"
+	echo "$0 function *.php"
+	echo "$0 \"test\" \"*\""
+	echo "$0 \"if (\" *.ini"
+	exit 1
+fi
+echo "== Search for files $2 containing $1"
+find . -name "$2" -print0 | xargs -0 grep --color -i "$1"

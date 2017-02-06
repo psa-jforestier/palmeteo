@@ -1,0 +1,40 @@
+#!/bin/ksh
+
+# Temporary folder used to store copied file. If modified, change also in the copyf script.
+tmp=~/.copypastef
+
+if [ "$1" == "" ]; then
+	dest=`cat $tmp/.copyf.last 2>/dev/null` 
+else
+	dest=$1
+fi
+
+if [[ -e "$dest" ]]; then
+	loop=1
+	while [[ "$loop" == "1" ]]; do
+        echo "Copy $dest to directory $(dirname $dest)"
+		echo "Warning: $dest already exists"
+		echo "  Your file : "
+		ls -la "$dest"
+		echo "  File to paste :"
+		ls -la $tmp/$dest
+		echo "Do you want to overwrite (Y/N) or make a diff (D) ?"
+		read overwrite
+		if [ "Y" == "$overwrite" -o "y" == "$overwrite" ]; then
+			loop=0
+		fi
+		if [ "N" == "$overwrite" -o "n" == "$overwrite" ]; then
+			exit 2
+		fi
+		if [ "D" == "$overwrite" -o "d" == "$overwrite" ]; then
+			diff -bu $dest $tmp/$dest | vi - 
+		fi 
+	done
+fi
+cp $tmp/$dest ./$dest
+if [[ $? != 0 ]]; then
+    echo "pastef: file $dest do not exists in temporary folder" >&2
+    exit 1
+else
+    echo File $dest copied from temporary folder
+fi
