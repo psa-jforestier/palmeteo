@@ -1,4 +1,4 @@
-#!/bin/ksh
+#!/bin/sh
 
 # Temporary folder used to store copied file. If modified, change also in the copyf script.
 tmp=~/.copypastef
