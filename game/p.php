@@ -29,10 +29,10 @@ $walls = [
 		[6,7,8]
 	);
 	var_dump($area);
-	while(true)
+	foreach($walls as $i=>$w)
 	{
-		echo $walls[rand(0,15)];
-		echo "\r\n";
+		echo "$i\r\n";
+		echo "$w\r\n";
 	}
 ncurses_init();
 $fullscreen = ncurses_newwin ( 0, 0, 0, 0);
