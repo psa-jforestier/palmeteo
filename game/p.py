@@ -1,4 +1,4 @@
-import curses
+import curses # For windows, use "python -m pip install curses-2.2-xxx.whl"
 
 try:
 	stdscr = curses.initscr()

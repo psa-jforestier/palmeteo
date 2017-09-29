@@ -2,6 +2,18 @@
 import curses
 import pprint
 import random 
+import time
+import binascii
+import math
+import struct
+
+
+def microtime(get_as_float = False) :
+    if get_as_float:
+        return time.time()
+    else:
+        return '%f %d' % math.modf(time.time())
+
  
 def wallToStr(w):
 	s = u''
@@ -16,8 +28,8 @@ try:
 	curses.noecho()
 	curses.cbreak() # react to keys instantly
 	stdscr.keypad(True) # Allow the app to catch special key 
-	#stdscr.clear()
-	#stdscr.refresh()
+	stdscr.clear()
+	stdscr.refresh()
 	'''
 	Labyrinthe
 	179	│
@@ -61,8 +73,25 @@ try:
 		0b0011:['▀▀▀', ' o ', '   '],
 		0b0100:['   ', ' o ', '▄▄▄'],
 
-		
 	}
+	
+	walls = {
+		# 
+		0b0000:['  ','  '], 
+		0b0001:[' #',' #'], 
+		0b0010:['# ','# '], 
+		0b0011:['##','  '],
+		0b0100:['  ','##'],
+		0b0101:[' #','  '],
+		0b0110:['  ','  '],
+		0b0111:['  ',' #'],
+		0b1000:['##','##']
+		
+		#0b0101:['##','##'],
+		#0b0110:['# ',' #'],
+		#0b0111:['  ','  '],
+	}
+	nb_of_wall = len(walls)
 	'''
 	for (i,j) in walls.items():
 		print i,"\r\n",wallToStr(j)
@@ -72,12 +101,16 @@ try:
 	w = 20
 	h = 10
 	area = [0] * h
+	x = 1
+	y = 0
 	for i in range(0,h):
 		area[i] = [0] * w
 		for j in range(0, w):
-			area[i][j] = (i * j ) % 5
+			cell = ((x+j) * (y+i)) % 6
+			area[i][j] = cell
 	
 	def areaToString(area, areaW, areaH):
+		'''
 		a = [None] * (3 * areaH)
 		for i in range(0,areaH):
 			line1 = ''
@@ -90,12 +123,48 @@ try:
 				line2 = line2 + wall[1]
 				line3 = line3 + wall[2]
 			print line1,"\r\n",line2,"\r\n",line3,"\r"
-		
+		'''
+		a = [None]* (2 * areaH)
+		for i in range(0, areaH):
+			line1 = ''
+			line2 = ''
+			for j in range(0, areaW):
+				cell = area[i][j]
+				wall = walls[cell]
+				line1 = line1 + wall[0]
+				line2 = line2 + wall[1]
+			print line1,"\r\n",line2,"\r"
+		return ''
 	
-	print areaToString(area, w, h)
+	random.seed(0)
+	x = 0
+	y = 0
+	while True:
+		w = 49
+		h = 10
+		area = [0] * h
+		T = microtime(True)
+		for i in range(0,h):
+			area[i] = [0] * w
+			for j in range(0, w):
+				cell_id = str(x+j) + "," +str(y+i)
+				cell_hash = binascii.crc32(cell_id, 0)
+				#cell_hash = ((x+j) * (y+i))
+				#cell_hash = x + j + y + i
+				#cell_hash = binascii.crc_hqx(struct.pack('<qqqq',x+j,y+i,x+j,y+i), 0)
+				cell = cell_hash % nb_of_wall
+				area[i][j] = cell
+		areaToString(area, w, h)
+		print "x=",x," y=",y, "last cell_h=", cell_hash, ' T=', microtime(True) - T
+		time.sleep(0.1)
+		stdscr.clear()		
+		stdscr.refresh()
+		x = x + 1
+		#y = y + 1
+	
 
 finally:
 	curses.nocbreak()
 	stdscr.keypad(False)
-	curses.echo()
-	curses.endwin()
+	#curses.echo()
+	#curses.endwin()
