@@ -17,7 +17,7 @@ cd $(dirname "$0")
 
 	echo ==============
 	date
-	echo $(date +%Y-%m-%d' '%H:%M:%S), $(date +%s), PI, $(rpi_temperature.sh | cut -c 6-9), nan, 0, \(0/0\). | tee -a /tmp.ram/weather.dat
+	echo $(date +%Y-%m-%d' '%H:%M:%S), $(date +%s), PI, $(./rpi_temperature.sh | cut -c 6-9), nan, 0, \(0/0\). | tee -a /tmp.ram/weather.dat
 	timeout $TIMEOUT_RECORDER \
 		../bin/rtl_fm -R $(($TIMEOUT_RECORDER-$RTLFM_TIME_OVERHEAD)) -f 868000000 -M fm -s 500k -r 75k -g 42 -A fast | \
 		../bin/rtl_868  | \
@@ -26,19 +26,21 @@ cd $(dirname "$0")
 	ls -la /tmp.ram/weather.dat
 	echo :: It contains $(cat /tmp.ram/weather.dat | wc -l) line
 	echo :: Send it to the server
-	timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat
+	timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat && timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat --output wu 
 	export ret=$?
 	if [ $ret -eq 0 ]
 	then
 		echo
 		echo "All data send successfully"
 		# Reset data file
+		cp /tmp.ram/weather.dat /tmp.ram/weather.last.dat
 		> /tmp.ram/weather.dat
 	elif [ $ret -eq 1 ]
 	then
 		echo
 		echo "Only one error has occured"
 		# Reset data file
+		cp /tmp.ram/weather.dat /tmp.ram/weather.last.dat
 		> /tmp.ram/weather.dat
 	elif [ $ret -eq 2 ]
 	then

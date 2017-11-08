@@ -36,6 +36,7 @@ $CONFIG['verbose'] = false;
 $CONFIG['dryrun'] = false;
 $CONFIG['loop'] = false;
 $CONFIG['retryonerror'] = false;
+$CONFIG['output'] = 'default'; // default, wu
 $returncode = 0;
 $i = 1;
 $file = "php://stdin";
@@ -53,6 +54,12 @@ while($i < $argc)
 		case "-v":
 		case "--verbose": {			
 			$CONFIG['verbose'] = true;
+			break;
+		}
+		case "-o":
+		case "--output": {
+			$CONFIG['output'] = $argv[$i+1];
+			$i++;
 			break;
 		}
 		case "-f":
@@ -81,7 +88,6 @@ while($i < $argc)
 	}
 	$i++;
 }
-
 
 echo "Reading data file from $file and send them to ".$CONFIG['serverEndpoint']."\r\n";
 if ($CONFIG['verbose']) {
@@ -148,6 +154,77 @@ while(!$exit)
 
 exit($returncode);
 
+function sendToWeatherUnderground($data)
+// http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol
+{
+	global $CONFIG;
+	$dateutc = gmdate('Y-m-d H:i:s', strtotime($data['date']));
+	$temp_f = null;
+	if (is_numeric($data['temp']))
+		$temp_f = sprintf('%.3f', 32 + ($data['temp'] * 9/5));
+	$hygro = null;
+	if (is_numeric($data['hygro']))
+		$hygro = $data['hygro'];
+	$url = 
+	//"https://weatherstation.wunderground.com/weatherstation/updateweatherstation.php"
+	"https://rtupdate.wunderground.com/weatherstation/updateweatherstation.php"
+	."?action=updateraw&ID=".urlencode($CONFIG['weatherUnderground.stationId'])."&PASSWORD=".urlencode($CONFIG['weatherUnderground.key'])."&dateutc=".urlencode($dateutc);
+	
+	// Is it the indoor sensor
+	if ($data['sensorId'] == $CONFIG['sensorIdInternal'])
+	{
+		$url = $url . "&indoortempf=$temp_f&indoorhumidity=$hygro";
+	}
+	else
+	{
+		$sensorWuid = $CONFIG['sensorIdMapping'][$data['sensorId']];
+		$url = $url . "&temp${sensorWuid}f=$temp_f&humidity=$hygro";
+	}
+	$url = $url . "&realtime=1&rtfreq=2.5&softwaretype=".urlencode("PalmeteoPHPLib");
+	if ($CONFIG['verbose'] === true)
+	{
+		echo "Weatherunderground data handler : $url\r\n";
+	}
+	echo ".";
+	if ($CONFIG['dryrun'] === false)
+	{
+		return curl_get($url);
+	}
+	return 200;
+}
+function sendToDefault($data)
+{
+	global $CONFIG;
+	$url = $CONFIG['serverEndpoint'].'?data='.urlencode(json_encode($data));
+
+	if ($CONFIG['verbose'] === true)
+	{
+		echo "Default data handler : $url\r\n";
+	}
+	if ($CONFIG['dryrun'] === false)
+	{
+		$httpcode = curl_get($url);
+	}
+	else
+		$httpcode = 200; // Dryrun simulate a 200 return code
+	echo ".";
+	return $httpcode;
+}
+
+function curl_get($url)
+{
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	if( !$result = curl_exec($ch))
+	{
+		trigger_error(curl_error($ch));
+	}
+	//var_dump($result);
+	$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+	curl_close($ch);
+	return $httpcode;
+}
 function handleString($s)
 {
 	global $CONFIG;
@@ -158,6 +235,8 @@ function handleString($s)
 			echo "Invalid line, skipping\r\n";
 		return 200;
 	}
+	if ($CONFIG['verbose'] === true)
+		echo "Processing line : \"$s\"\r\n";
 	$date = trim($d[0]);
 	$date_ts = 0 + trim($d[1]);
 	$sensorId = trim($d[2]);
@@ -176,29 +255,15 @@ function handleString($s)
 		}
 	}
 	
-	
 	$data = array('date'=>$date, 'date_ts'=>$date_ts, 'sensorId'=>$sensorId, 'temp'=>$temp, 'hygro'=>$hygro, 'info'=>$info, 'signal'=>$signal, 'noise'=>$noise);
-	echo ".";
-	$url = $CONFIG['serverEndpoint'].'?data='.urlencode(json_encode($data));
 	if ($CONFIG['verbose'] === true)
 	{
-		var_dump($data);
+		print_r($data);
 	}
-	if ($CONFIG['dryrun'] === false)
-	{
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);	
-		if( ! $result = curl_exec($ch))
-		{
-			trigger_error(curl_error($ch));
-			
-		}
-		$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-		curl_close($ch); 
-	}
-	else
-		$httpcode = 200; // Dryrun simulate a 200 return code
-	echo ".";
-	return $httpcode;
+	$result = 0;
+	if ($CONFIG['output'] === 'default')
+		$result = sendToDefault($data);
+	else if ($CONFIG['output'] === 'wu')
+		$result = sendToWeatherUnderground($data);
+	return $result;
 }

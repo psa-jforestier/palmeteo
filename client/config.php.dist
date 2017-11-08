@@ -4,3 +4,13 @@
  **/
 
 $CONFIG['serverEndpoint'] = 'http://weather.server.com/upload.php';
+
+$CONFIG['weatherUnderground.stationId'] = ''; // Station id (or empty)
+$CONFIG['weatherUnderground.key'] = ''; // Station key
+
+$CONFIG['sensorIdMapping'] = array(
+	'PI'=>'2', // PI
+	'45'=>'3', // Ext
+	'28'=>'1'  // Int
+);
+$CONFIG['sensorIdInternal'] = '28';
