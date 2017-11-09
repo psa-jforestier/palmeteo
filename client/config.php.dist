@@ -4,9 +4,18 @@
  **/
 
 $CONFIG['serverEndpoint'] = 'http://weather.server.com/upload.php';
+$CONFIG['location.name'] = 'Sannois, France';
+$CONFIG['location.lat'] = 0.9760; // latitude of the weather station
+$CONFIG['location.lon'] = 0.267; // longitude
+$CONFIG['location.alt'] = 49; // altitude in m
 
-$CONFIG['weatherUnderground.stationId'] = ''; // Station id (or empty)
-$CONFIG['weatherUnderground.key'] = ''; // Station key
+$CONFIG['wu'] = 'Weather Underground'; // Provider name, do not change
+$CONFIG['owd'] = 'Open Weather Map'; // Provider name, do not change
+
+$CONFIG['weatherUnderground.stationId'] = 'ABCDEFGH2'; // Station id (or empty)
+$CONFIG['weatherUnderground.key'] = 'ab3def6g'; // Station key
+
+$CONFIG['openWeatherMap.appId'] = '1234567890abcdef1234567890abcdef'; 
 
 $CONFIG['sensorIdMapping'] = array(
 	'PI'=>'2', // PI
