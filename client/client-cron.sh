@@ -26,7 +26,7 @@ cd $(dirname "$0")
 	ls -la /tmp.ram/weather.dat
 	echo :: It contains $(cat /tmp.ram/weather.dat | wc -l) line
 	echo :: Send it to the server
-	timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat && timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat --output wu 
+	timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat && timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat --output wu -v
 	export ret=$?
 	if [ $ret -eq 0 ]
 	then

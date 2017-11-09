@@ -22,6 +22,9 @@ CREATE TABLE `report` (
  KEY `date` (`date`),
  KEY `sensorid` (`sensorid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+
+To implement  :  https://www.pwsweather.com/obs/KFLTARPO8.html
+
 **/
 
 if (!file_exists('config.php'))
@@ -213,12 +216,17 @@ function sendToDefault($data)
 
 function curl_get($url)
 {
+	global $CONFIG;
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	if( !$result = curl_exec($ch))
 	{
 		trigger_error(curl_error($ch));
+	}
+	if($CONFIG['verbose'] === true)
+	{
+		var_dump(trim($result));
 	}
 	//var_dump($result);
 	$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
