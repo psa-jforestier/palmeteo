@@ -6,7 +6,10 @@ import time
 import binascii
 import math
 import struct
+from curses import wrapper
+import locale
 
+locale.setlocale(locale.LC_ALL, '')    # set your locale
 
 def microtime(get_as_float = False) :
     if get_as_float:
@@ -74,7 +77,7 @@ try:
 		0b0100:['   ', ' o ', '▄▄▄'],
 
 	}
-	
+	# █
 	walls = {
 		# 
 		0b0000:['  ','  '], 
@@ -98,7 +101,7 @@ try:
 		print "\r\n"
 	'''
 	random.seed(0)
-	w = 20
+	w = 50
 	h = 10
 	area = [0] * h
 	x = 1
@@ -124,6 +127,7 @@ try:
 				line3 = line3 + wall[2]
 			print line1,"\r\n",line2,"\r\n",line3,"\r"
 		'''
+		lines = ''
 		a = [None]* (2 * areaH)
 		for i in range(0, areaH):
 			line1 = ''
@@ -133,32 +137,40 @@ try:
 				wall = walls[cell]
 				line1 = line1 + wall[0]
 				line2 = line2 + wall[1]
-			print line1,"\r\n",line2,"\r"
-		return ''
+			#print line1,"\r\n",line2,"\r"
+			lines = lines + line1 +  "\r\n" + line2 + "\r\n"
+		return lines
 	
 	random.seed(0)
 	x = 0
 	y = 0
 	while True:
-		w = 49
-		h = 10
+		w = 32
+		h = 16
 		area = [0] * h
 		T = microtime(True)
 		for i in range(0,h):
 			area[i] = [0] * w
 			for j in range(0, w):
+				xx = x + j
+				yy = y + i
 				cell_id = str(x+j) + "," +str(y+i)
-				cell_hash = binascii.crc32(cell_id, 0)
+				#cell_hash = binascii.crc32(cell_id, 0)
 				#cell_hash = ((x+j) * (y+i))
 				#cell_hash = x + j + y + i
 				#cell_hash = binascii.crc_hqx(struct.pack('<qqqq',x+j,y+i,x+j,y+i), 0)
+				#cell_hash = (xx & 0xFF) |  (yy & 0xff)
+				cell_hash = binascii.crc_hqx(
+					struct.pack('<qq',xx & 0x0ffffffff,yy&0xffffffff), 
+					0)
 				cell = cell_hash % nb_of_wall
 				area[i][j] = cell
-		areaToString(area, w, h)
-		print "x=",x," y=",y, "last cell_h=", cell_hash, ' T=', microtime(True) - T
-		time.sleep(0.1)
 		stdscr.clear()		
+		stdscr.addstr(areaToString(area, w, h))
 		stdscr.refresh()
+		#stdscr.refresh()
+		print "x=",x," y=",y, "last cell_h=", cell_hash, ' T=', microtime(True) - T
+		time.sleep(0.2)
 		x = x + 1
 		#y = y + 1
 	
@@ -166,5 +178,5 @@ try:
 finally:
 	curses.nocbreak()
 	stdscr.keypad(False)
-	#curses.echo()
-	#curses.endwin()
+	curses.echo()
+	curses.endwin()

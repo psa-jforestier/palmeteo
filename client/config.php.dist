@@ -23,3 +23,4 @@ $CONFIG['sensorIdMapping'] = array(
 	'28'=>'1'  // Int
 );
 $CONFIG['sensorIdInternal'] = '28';
+$CONFIG['sensorIdExternal'] = '45';
