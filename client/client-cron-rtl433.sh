@@ -28,6 +28,7 @@ cd $(dirname "$0")
 	echo :: It contains $(cat /tmp.ram/weather.dat | wc -l) line
 	echo :: Send it to the server
 	timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json && \
+		timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output folder /tmp.ram/ && \
 		timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output wu && \
 		timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output owm
 	export ret=$?

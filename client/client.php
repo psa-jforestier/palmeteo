@@ -44,7 +44,7 @@ $CONFIG['verbose'] = false;
 $CONFIG['dryrun'] = false;
 $CONFIG['loop'] = false;
 $CONFIG['retryonerror'] = false;
-$CONFIG['output'] = 'default'; // default, wu, owm
+$CONFIG['output'] = 'default'; // default, wu, owm, folder
 $returncode = 0;
 $i = 1;
 $file = "php://stdin";
@@ -68,6 +68,11 @@ while($i < $argc)
 		case "--output": {
 			$CONFIG['output'] = $argv[$i+1];
 			$i++;
+			if ($CONFIG['output'] == 'folder')
+			{
+				$CONFIG['folder'] = $argv[$i+1];
+				$i++;
+			}
 			break;
 		}
 		case "-f":
@@ -97,6 +102,7 @@ while($i < $argc)
 	}
 	$i++;
 }
+
 echo "Reading data file from $file and send them to ".$CONFIG[$CONFIG['output']]."\r\n";
 if ($CONFIG['verbose']) {
 	if ($CONFIG['dryrun']) echo " Dry run is enable, nothing will be send to endpoint.\r\n";
@@ -369,6 +375,38 @@ function sendToWeatherUnderground($data)
 	
 	return 200;
 }
+
+function sendToFolder($data, $where)
+{
+	global $CONFIG;
+	if ($CONFIG['verbose'] === true)
+	{
+		echo "Will create data file in $where\n";
+	}
+	$filenames = array(
+		$where.basename('sensor_model_'.$data['model']),
+		$where.basename('sensor_id_'.$data['sensorId']),
+		$where.basename('sensor_model_'.$data['model'].'_id_'.$data['sensorId'])
+	);
+	foreach($filenames as $f)
+	{
+
+		$fd = fopen($f, 'w');
+		fputs($fd, 
+			sprintf("Temp=%3.3f;Hygro=%s;Lowbat=%d;Date_TS=%d;Id=%s;Model=%s\n",
+				$data['temp'],
+				($data['hygro'] === NULL ? "n/a" : $data['hygro']),
+				$data['lowbatt'],
+				$data['date_ts'],
+				$data['sensorId'],
+				$data['model'])
+			);
+		fclose($fd);
+	}
+
+	return 200;
+				                 
+}
 function sendToDefault($data)
 {
 	global $CONFIG;
@@ -457,7 +495,12 @@ function handleString($s)
 		if (!isset($d['date_ts']))
 			$d['date_ts'] = strtotime($d['time']); // Must be a localtime
 		$d['lowbatt'] = (@$d['battery'] != 'OK' ? '1' : '0');
-		$data = array('date'=>$d['time'], 'date_ts'=>$d['date_ts'], 'sensorId'=>$d['id'], 'temp'=>$d['temperature_C'], 'hygro'=>@$d['humidity'], 'info'=>'', 'newbatt'=>$d['newbattery'], 'lowbatt'=>$d['lowbatt'], 'signal'=>0, 'noise'=>0);
+		$data = array('date'=>$d['time'], 'date_ts'=>$d['date_ts'], 'sensorId'=>$d['id'], 
+			'model'=>$d['model'],
+			'temp'=>$d['temperature_C'], 'hygro'=>@$d['humidity'], 
+			'info'=>'', 
+			'newbatt'=>$d['newbattery'], 'lowbatt'=>$d['lowbatt'], 
+			'signal'=>0, 'noise'=>0);
 	}
 	else
 	{
@@ -474,6 +517,8 @@ function handleString($s)
 		$result = sendToWeatherUnderground($data);
 	else if ($CONFIG['output'] === 'owm')
 		$result = sendToOpenWeatherMap($data);
+	else if ($CONFIG['output'] == 'folder')
+		$result = sendToFolder($data, $CONFIG['folder']);
 	else
 		die('No output format specified');
 	return $result;
