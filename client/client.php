@@ -393,11 +393,12 @@ function sendToFolder($data, $where)
 
 		$fd = fopen($f, 'w');
 		fputs($fd, 
-			sprintf("Temp=%3.3f;Hygro=%s;Lowbat=%d;Date_TS=%d;Id=%s;Model=%s\n",
+			sprintf("Temp=%3.3f;Hygro=%s;Lowbat=%d;Date_TS=%d;Date=%s;Id=%s;Model=%s\n",
 				$data['temp'],
 				($data['hygro'] === NULL ? "n/a" : $data['hygro']),
 				$data['lowbatt'],
 				$data['date_ts'],
+				$data['date'],
 				$data['sensorId'],
 				$data['model'])
 			);

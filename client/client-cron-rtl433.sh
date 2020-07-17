@@ -18,6 +18,7 @@ cd $(dirname "$0")
 	echo ==============
 	date
 	#echo $(date +%Y-%m-%d' '%H:%M:%S), $(date +%s), PI, $(./rpi_temperature.sh | cut -c 6-9), nan, 0, \(0/0\). | tee -a /tmp.ram/weather.dat
+	echo {\"time\":\"$(date +%Y-%m-%d' '%H:%M:%S)\", \"brand\":\"raspberry\", \"model\":\"$(hostname)\", \"id\":\"PI\", \"battery\":\"OK\", \"newbattery\":\"0\", \"temperature_C\":$(./rpi_temperature.sh | cut -c 6-9) } | tee -a /tmp.ram/weather.dat
 #	timeout $TIMEOUT_RECORDER \
 #		../bin/rtl_fm -R $(($TIMEOUT_RECORDER-$RTLFM_TIME_OVERHEAD)) -f 868000000 -M fm -s 500k -r 75k -g 42 -A fast | \
 #		../bin/rtl_868  | \
@@ -57,4 +58,7 @@ cd $(dirname "$0")
 		# keep datafile and send it for the next run
 	fi
 	#rm /tmp.ram/weather.dat
-	
+	# sometime, the rtl dongle crash, we need to reset it. Identify bus (001) and device (004) with lsusb
+	sudo usbreset /dev/bus/usb/001/004
+	date
+
