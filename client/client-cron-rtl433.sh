@@ -10,7 +10,7 @@ export TIMEOUT_RECORDER=30
 export RTLFM_TIME_OVERHEAD=4
 
 # Maximum duration of the sending process
-export TIMEOUT_SENDER=20
+export TIMEOUT_SENDER=60
 
 cd $(dirname "$0")
 # If duration is 30s, the script must be planned every minute
@@ -23,15 +23,31 @@ cd $(dirname "$0")
 #		../bin/rtl_fm -R $(($TIMEOUT_RECORDER-$RTLFM_TIME_OVERHEAD)) -f 868000000 -M fm -s 500k -r 75k -g 42 -A fast | \
 #		../bin/rtl_868  | \
 #		tee -a /tmp.ram/weather.dat
-    ../bin/rtl_433 -G -g 50 -f 868300000 -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
+    # old rtl433 client :
+	# ../bin/rtl_433 -G -g 50 -f 868300000 -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
+	
+	# new rtl433 client :
+	/home/jerome/rtl_433_forked/build/src/rtl_433 -g 50 -f 868300000 -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
+	export ret=$?
+	if [ $ret -eq 0 ]
+	then
+		echo "RTL_433 returned with value $ret"
+		if [ $ret -eq 2 ]
+		then
+			# sometime, the rtl dongle crash, we need to reset it. Identify bus (001) and device (004) with lsusb
+			echo "Reset USB device, it should be ok for the next run"
+			sudo usbreset /dev/bus/usb/001/004
+		fi
+	fi
+    
 	echo :: Datafile is :
 	ls -la /tmp.ram/weather.dat
 	echo :: It contains $(cat /tmp.ram/weather.dat | wc -l) line
 	echo :: Send it to the server
 	timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json && \
-		timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output folder /tmp.ram/ && \
-		timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output wu && \
-		timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output owm
+		timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output folder /tmp.ram/ #&& \
+#		timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output wu && \
+#		timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output owm
 	export ret=$?
 	if [ $ret -eq 0 ]
 	then
@@ -54,11 +70,10 @@ cd $(dirname "$0")
 		# keep datafile and send it for the next run
 	elif [ $ret -eq 124 ]
 	then
-		echo
+		echo "Something went wrong when sending data to the server"
 		# keep datafile and send it for the next run
 	fi
 	#rm /tmp.ram/weather.dat
-	# sometime, the rtl dongle crash, we need to reset it. Identify bus (001) and device (004) with lsusb
-	sudo usbreset /dev/bus/usb/001/004
+	
 	date
 

@@ -495,7 +495,10 @@ function handleString($s)
 		}
 		if (!isset($d['date_ts']))
 			$d['date_ts'] = strtotime($d['time']); // Must be a localtime
-		$d['lowbatt'] = (@$d['battery'] != 'OK' ? '1' : '0');
+    if (isset($d['battery']))
+      $d['lowbatt'] = (@$d['battery'] != 'OK' ? '1' : '0');
+    else if (isset($d['battery_ok']))
+      $d['lowbatt'] = ($d['battery_ok'] == '1' ? '0' : '1');
 		$data = array('date'=>$d['time'], 'date_ts'=>$d['date_ts'], 'sensorId'=>$d['id'], 
 			'model'=>$d['model'],
 			'temp'=>$d['temperature_C'], 'hygro'=>@$d['humidity'], 
