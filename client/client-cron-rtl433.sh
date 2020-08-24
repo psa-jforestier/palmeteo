@@ -27,7 +27,7 @@ cd $(dirname "$0")
 	# ../bin/rtl_433 -G -g 50 -f 868300000 -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
 	
 	# new rtl433 client :
-	/home/jerome/rtl_433_forked/build/src/rtl_433 -g 50 -f 868300000 -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
+	/home/jerome/rtl_433/build/src/rtl_433 -g 50 -f 868300000 -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
 	export ret=$?
 	if [ $ret -eq 0 ]
 	then
