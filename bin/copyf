@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Temporary folder used to store copied file. If modified, change also in the pastef script.
 tmp=~/.copypastef
@@ -8,12 +8,12 @@ cat << EOF
 copyf / pastef: a couple of scripts to handle easy copy / paste of files
 
 copyf usage: 
-    copyf [file]
+    copyf [[file]]
     file: File to copy in temporary folder
     no parameters: Print this help, last copied file, and disk usage of the temporary folder used by copyf/pastef
 
 pastef usage:
-    pastef [file]
+    pastef [[file]]
     file: File to paste from temporary folder to current folder
     no parameters: Paste last copied file
 
@@ -30,6 +30,9 @@ else
     else
         mkdir $tmp 2>/dev/null
         TO=$(basename $1)
+        if [[ -e $tmp/$TO ]]; then
+            echo "copyf: warning, overwriting an old copy of this file" >&2
+        fi
         cp $1 $tmp/$TO
         if [[ $? != 0 ]]; then
             echo "copyf: unable to copy file $1" >&2
@@ -39,7 +42,7 @@ else
                 echo "Warning: file $1 is a deep folder. Use \"pastef $TO\" to paste the file."
             fi
             echo "$TO" > $tmp/.copyf.last
-            echo File $1 copied to local temp dir
+            echo copyf: file $1 copied to local temp dir.
         fi
     fi
 fi
