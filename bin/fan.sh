@@ -26,14 +26,14 @@ fi
 # example : GPIO_NUM = 4 => wPi = 4 => BCM = 23 => physical pin on the connector = 16
 GPIO_BCM_NUM=23
 
-TMP_FAN_STATUS=/tmp.ram/fan.gpio.${GPIO_NUM}
+TMP_FAN_STATUS=/tmp.ram/fan.gpio.${GPIO_BCM_NUM}
 
 alias datef='date "+%F %T"'
 
 gpio -g mode $GPIO_BCM_NUM out
 
 if [[ "$1" == "test" ]]; then
-	echo "Testing the fan on GPI $GPIO_NUM"
+	echo "Testing the fan on GPIO $GPIO_BCM_NUM"
 	echo "Press ^C to quit"
 	while [[ true ]]; do
 		echo "ON"
