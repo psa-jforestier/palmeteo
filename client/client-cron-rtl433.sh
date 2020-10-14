@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # This script has to be planned on a crontab.
 # the crontab must planned this script every TIMEOUT_RECORDER+TIMEOUT_SENDER.
 
@@ -28,16 +28,13 @@ cd $(dirname "$0")
 	
 	# new rtl433 client :
 	/home/jerome/rtl_433/build/src/rtl_433 -f 868300000 -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
-	export ret=$?
-	if [ $ret -eq 0 ]
+	ret="${PIPESTATUS[0]}"
+	echo "RTL_433 returned with value $ret"
+	if [ "$ret" -eq 2 ] || [ "$ret" -eq 3 ] || [ "$ret" -eq 5 ] 
 	then
-		echo "RTL_433 returned with value $ret"
-		if [ $ret -eq 2 ]
-		then
-			# sometime, the rtl dongle crash, we need to reset it. Identify bus (001) and device (004) with lsusb
-			echo "Reset USB device, it should be ok for the next run"
-			sudo usbreset /dev/bus/usb/001/004
-		fi
+		# sometime, the rtl dongle crash, we need to reset it. Identify bus (001) and device (004) with lsusb
+		echo "Reset USB device, it should be ok for the next run"
+		sudo usbreset /dev/bus/usb/001/004
 	fi
     
 	echo :: Datafile is :
