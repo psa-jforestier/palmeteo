@@ -15,6 +15,22 @@ export TIMEOUT_SENDER=60
 cd $(dirname "$0")
 # If duration is 30s, the script must be planned every minute
 
+	# Load config var from PHP scripts
+	OWM_CITYID=$(php -r "include 'config.php'; echo @\$CONFIG['openWeatherMap.cityId'];")
+	OWM_APPID=$( php -r "include 'config.php'; echo @\$CONFIG['openWeatherMap.appId'];")
+	if [ "$OWM_APPID" ==  "" ] || [ "$OWM_CITYID" == "" ]
+	then
+		echo "No OpenWeatherMap credential found in config.php . Also, install 'jq'."
+	else
+		curl -s "https://api.openweathermap.org/data/2.5/weather?units=metric&id=$OWM_CITYID&appid=$OWM_APPID" > /tmp.ram/openweathermap.dat
+		OWM_TEMP=$(cat /tmp.ram/openweathermap.dat | jq '.main.temp')
+		OWM_HUMI=$(cat /tmp.ram/openweathermap.dat | jq '.main.humidity')
+		OWM_DATE=$(cat /tmp.ram/openweathermap.dat | jq '.dt')
+
+		echo {\"time\":\"$(date -d @$OWM_DATE +%Y-%m-%d' '%H:%M:%S)\", \"brand\":\"openweathermap\", \"model\":\"$(hostname)\", \"id\":\"OWM\", \"battery\":\"OK\", \"newbattery\":\"0\", \"temperature_C\":$OWM_TEMP, \"humidity\":$OWM_HUMI} | tee -a /tmp.ram/weather.dat
+	fi
+
+
 	echo ==============
 	date
 	#echo $(date +%Y-%m-%d' '%H:%M:%S), $(date +%s), PI, $(./rpi_temperature.sh | cut -c 6-9), nan, 0, \(0/0\). | tee -a /tmp.ram/weather.dat

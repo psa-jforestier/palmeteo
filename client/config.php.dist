@@ -16,6 +16,7 @@ $CONFIG['weatherUnderground.stationId'] = 'ABCDEFGH2'; // Station id (or empty)
 $CONFIG['weatherUnderground.key'] = 'ab3def6g'; // Station key
 
 $CONFIG['openWeatherMap.appId'] = '1234567890abcdef1234567890abcdef'; 
+$CONFIG['openWeatherMap.cityId'] = '123456'; // Go to openweathermap.org and search for your city
 
 #I'm not sure the mapping must be done here. It should be on the server side
 $CONFIG['sensorIdMapping'] = array(
