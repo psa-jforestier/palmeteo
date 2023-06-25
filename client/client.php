@@ -60,7 +60,7 @@ while($i < $argc)
 			break;
 		}
 		case "-v":
-		case "--verbose": {			
+		case "--verbose": {
 			$CONFIG['verbose'] = true;
 			break;
 		}
@@ -390,18 +390,55 @@ function sendToFolder($data, $where)
 	);
 	foreach($filenames as $f)
 	{
-
-		$fd = fopen($f, 'w');
+    if ($CONFIG['verbose'] === true)
+    {
+      echo "file $f\n";
+    }
+		
+    /**
 		fputs($fd, 
-			sprintf("Temp=%3.3f;Hygro=%s;Lowbat=%d;Date_TS=%d;Date=%s;Id=%s;Model=%s\n",
-				$data['temp'],
+			sprintf("Temp=%s;Hygro=%s;Rain_mm=%s;Rain_raw=%s;Lowbat=%d;Date_TS=%d;Date=%s;Id=%s;Model=%s\n",
+				($data['temp'] ?? "n/a"), // https://www.php.net/manual/en/language.operators.comparison.php#language.operators.comparison.coalesce
 				($data['hygro'] === NULL ? "n/a" : $data['hygro']),
+        ($data['rain_mm'] ?? 'n/a'),
+        ($data['rain_raw'] ?? 'n/a'),
 				$data['lowbatt'],
 				$data['date_ts'],
 				$data['date'],
 				$data['sensorId'],
 				$data['model'])
 			);
+      **/
+    var_dump($data);
+    $filecontent = '';
+    // If it is a temp/hygro sensor
+    if ($data['temp']!==NULL)
+    {
+      $filecontent .= sprintf("Temp=%s;Hygro=%s;",
+        ($data['temp'] ?? "n/a"),
+        ($data['hygro'] ?? "n/a")
+      );
+    }
+    // if it is a rain sensor
+    if ($data['rain_mm'] !== NULL)
+    {
+      $filecontent .= sprintf("Rain_mm=%s;Rain_raw=%s;",
+        ($data['rain_mm'] ?? "n/a"),
+        ($data['rain_raw'] ?? "n/a")
+      );
+    }
+    $filecontent .= sprintf("Lowbat=%d;Date_TS=%d;Date=%s;Id=%s;Model=%s\n",
+      $data['lowbatt'],
+      $data['date_ts'],
+      $data['date'],
+      $data['sensorId'],
+      $data['model']
+    );
+    if ($CONFIG['verbose'] === true)
+      echo $filecontent;
+    // for all kind of sensor
+    $fd = fopen($f, 'w');
+    fputs($fd, $filecontent);
 		fclose($fd);
 	}
 
@@ -415,7 +452,7 @@ function sendToDefault($data)
 
 	if ($CONFIG['verbose'] === true)
 	{
-		echo "Default data handler : $url\r\n";
+		echo "Default data handler : ".urldecode($url)."\r\n";
 	}
 	if ($CONFIG['dryrun'] === false)
 	{
@@ -483,16 +520,14 @@ function handleString($s)
 	else if ($CONFIG['format'] == 'json')
 	{
 		$d = json_decode($s, true, 4);
-		if ($d === null 
-			||
-			(!isset($d['time']) || !isset($d['id']) )
-			||
-			(!isset($d['temperature_C']) && !isset($d['humidity']))
-		)
-		{
-			echo "Skipping line because it is an invalid json : $s\r\n";
+    if ($d === null || $d == "" ||
+      (!isset($d['time']) || !isset($d['id']) )
+    )
+    {
+      echo "Skipping line because it is an invalid json : $s\r\n";
 			return 200;
-		}
+    }
+
 		if (!isset($d['date_ts']))
 			$d['date_ts'] = strtotime($d['time']); // Must be a localtime
     if (isset($d['battery']))
@@ -501,7 +536,8 @@ function handleString($s)
       $d['lowbatt'] = ($d['battery_ok'] == '1' ? '0' : '1');
 		$data = array('date'=>$d['time'], 'date_ts'=>$d['date_ts'], 'sensorId'=>$d['id'], 
 			'model'=>$d['model'],
-			'temp'=>$d['temperature_C'], 'hygro'=>@$d['humidity'], 
+			'temp'=>@$d['temperature_C'], 'hygro'=>@$d['humidity'], 
+      'rain_mm' => @$d['rain_mm'], 'rain_raw' => @$d['rain_raw'],
 			'info'=>'', 
 			'newbatt'=>$d['newbattery'], 'lowbatt'=>$d['lowbatt'], 
 			'signal'=>0, 'noise'=>0);

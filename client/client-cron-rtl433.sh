@@ -10,9 +10,12 @@ export TIMEOUT_RECORDER=30
 export RTLFM_TIME_OVERHEAD=4
 
 # Maximum duration of the sending process
-export TIMEOUT_SENDER=60
+export TIMEOUT_SENDER=120
 
 cd $(dirname "$0")
+
+echo "====================================="
+date
 # If duration is 30s, the script must be planned every minute
 
 	# Load config var from PHP scripts
@@ -26,13 +29,16 @@ cd $(dirname "$0")
 		OWM_TEMP=$(cat /tmp.ram/openweathermap.dat | jq '.main.temp')
 		OWM_HUMI=$(cat /tmp.ram/openweathermap.dat | jq '.main.humidity')
 		OWM_DATE=$(cat /tmp.ram/openweathermap.dat | jq '.dt')
+		OWM_RAIN=$(cat /tmp.ram/openweathermap.dat | jq '.rain["1h"]')
+		if [ "$OWM_RAIN" == "null" ]
+		then
+			OWM_RAIN=0
+		fi
 
-		echo {\"time\":\"$(date -d @$OWM_DATE +%Y-%m-%d' '%H:%M:%S)\", \"brand\":\"openweathermap\", \"model\":\"$(hostname)\", \"id\":\"OWM\", \"battery\":\"OK\", \"newbattery\":\"0\", \"temperature_C\":$OWM_TEMP, \"humidity\":$OWM_HUMI} | tee -a /tmp.ram/weather.dat
+		echo {\"time\":\"$(date -d @$OWM_DATE +%Y-%m-%d' '%H:%M:%S)\", \"brand\":\"openweathermap\", \"model\":\"$(hostname)\", \"id\":\"OWM\", \"battery\":\"OK\", \"newbattery\":\"0\", \"temperature_C\":$OWM_TEMP, \"humidity\":$OWM_HUMI, \"rain_mm\":$OWM_RAIN} | tee -a /tmp.ram/weather.dat
 	fi
 
 
-	echo ==============
-	date
 	#echo $(date +%Y-%m-%d' '%H:%M:%S), $(date +%s), PI, $(./rpi_temperature.sh | cut -c 6-9), nan, 0, \(0/0\). | tee -a /tmp.ram/weather.dat
 	echo {\"time\":\"$(date +%Y-%m-%d' '%H:%M:%S)\", \"brand\":\"raspberry\", \"model\":\"$(hostname)\", \"id\":\"PI\", \"battery\":\"OK\", \"newbattery\":\"0\", \"temperature_C\":$(./rpi_temperature.sh | cut -c 6-9) } | tee -a /tmp.ram/weather.dat
 #	timeout $TIMEOUT_RECORDER \
@@ -43,7 +49,7 @@ cd $(dirname "$0")
 	# ../bin/rtl_433 -G -g 50 -f 868300000 -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
 	
 	# new rtl433 client :
-	/home/jerome/rtl_433/build/src/rtl_433 -f 868300000 -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
+	/home/jerome/rtl_433.2023/build/src/rtl_433 -f 868300000 -F http -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
 	ret="${PIPESTATUS[0]}"
 	echo "RTL_433 returned with value $ret"
 	if [ "$ret" -eq 2 ] || [ "$ret" -eq 3 ] || [ "$ret" -eq 5 ] 
@@ -57,36 +63,53 @@ cd $(dirname "$0")
 	ls -la /tmp.ram/weather.dat
 	echo :: It contains $(cat /tmp.ram/weather.dat | wc -l) line
 	echo :: Send it to the server
-	timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json && \
-		timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output folder /tmp.ram/ #&& \
-#		timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output wu && \
-#		timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output owm
+	echo :: Start at $(date)
+	retrylater=0
+
+		
+	timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json
 	export ret=$?
-	if [ $ret -eq 0 ]
+	echo :: End at $(date)
+	if [ "$ret" -eq 0 ]
+	then
+		echo "Data successfully send to remote server"
+	else
+		echo "Error $ret while sending to remote server, will retry later"
+		# err 124 is a timeout error
+		retrylater=1
+	fi
+	
+	timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output folder /tmp.ram/
+	export ret=$?
+	if [ "$ret" -eq 0 ]
+	then
+		echo "Data successfully send to local file server"
+	else
+		echo "Error $ret while sending to local file server, will retry later"
+		retrylater=1
+	fi
+	
+	if [ "$retrylater" -eq 0 ]
 	then
 		echo
 		echo "All data send successfully"
 		# Reset data file
 		cp /tmp.ram/weather.dat /tmp.ram/weather.last.dat
 		> /tmp.ram/weather.dat
-	elif [ $ret -eq 1 ]
-	then
+	else
 		echo
-		echo "Only one error has occured"
-		# Reset data file
-		cp /tmp.ram/weather.dat /tmp.ram/weather.last.dat
-		> /tmp.ram/weather.dat
-	elif [ $ret -eq 2 ]
-	then
-		echo
-		echo "Several errors has occured"
-		# keep datafile and send it for the next run
-	elif [ $ret -eq 124 ]
-	then
-		echo "Something went wrong when sending data to the server"
-		# keep datafile and send it for the next run
+		echo "At least one error has occured, retry later"
 	fi
-	#rm /tmp.ram/weather.dat
 	
+	
+        
+	# check if rpimonitor is still working. Should reply 401 or 200
+	curl http://localhost:8888/ --max-time 5 -s
+	ret="$?"
+	if [ "$ret" -ne "0" ]
+	then
+		sudo service rpimonitor restart
+	fi
+	echo
 	date
 
