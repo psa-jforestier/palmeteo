@@ -28,7 +28,7 @@ This project give information on how to setup a local weather station, with your
 - By experience, I know **it is not a good idea to let rtl_433 run for ever** to listen for data from the sensor : the USB dongle will go hot, and it is not very usefull to gather weather data every 10s, and store them also at such frequency.
 - So I decided to **gather data for 30s every 20mn**. To do that, I scheduled a cron-job to run a shell script running rtl_433 for 30 seconds only (using the `-T` flag to do so). In 30s, I received 3 or 4 times data from the sensors.
 - This shell script also call the [OpenWeatherMAP API](https://openweathermap.org/current) to get the **current region temperature and considere it as an other kind of sensor**.
-- Additionnaly, the shell script also get the **Raspberry Pi internal temperature**.
+- Additionnaly, the shell script also get the **Raspberry Pi CPU temperature**.
 - Data received are stored locally on the Raspberry Pi, but to not overload the SD card, **I use a RAM drive to store them**. It is not a big deal if the data are lost when the Pi is restarted.
 - After the 30s of data gathering, a **script is run to filter data, and store them on the RAM drive in separate files and are sent to the external MySQL server**. The seprates files will allow easy data reading for other process like RPIMonitor.
 - RPIMonitor which is a service runnning in background, will read the separate files at regular basis, process them, and **generate RRD files**
