@@ -21,7 +21,7 @@ This project give information on how to setup a local weather station, with your
 - Also, to have nice weather graphic, I set up a connection to the **Openweathermap.org site to get current temperature from regional weather station**. It allows me to compare my data with some other public data.
 
 **How it works**
-
+![Diagram](diag.png)
 - Sensors (temperature, humidity) broadcasts **data on 868MHz** to any compatible receivers. Normally, because I use La Crosse sensors, the receivers are supposed to be La Crosse weather stations. But because data are sent over the air, any radio receivers able to tune on 868MHz can receive data from the sensors. Note that data are sent every 6 to 10 seconds.
 - I use a USB dongle to receive radio data on the Raspberry Pi. Normally, this kind of receivers are used to receive TV broadcasts, but with some special drivers **you can tune to any frequency, especially the 868MHz band**.
 - On the Raspberry Pi, I run **rtl_433 program to receive, and decode, the data from the sensors**. The protocol used by the sensors is quite simple, there is no cryptographic encoding. It has been reverse-engeneered several time ( [see my own implementation here](https://github.com/merbanan/rtl_433/commit/a9a574fe4f93b63caef52d0fcecb23afa0a01fc2) ), and the rtl_433 know how to decode a lot of protocols.
@@ -33,7 +33,7 @@ This project give information on how to setup a local weather station, with your
 - After the 30s of data gathering, a **script is run to filter data, and store them on the RAM drive in separate files and are sent to the external MySQL server**. The seprates files will allow easy data reading for other process like RPIMonitor.
 - RPIMonitor which is a service runnning in background, will read the separate files at regular basis, process them, and **generate RRD files**
 - This monitoring tool provide a web interface and some basic features to **present RRD data in a graphic**.
-
+![Screenshots](screenshot.png)
 
 
 
