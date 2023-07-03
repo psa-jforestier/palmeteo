@@ -8,7 +8,7 @@ This project give information on how to setup a local weather station, with your
 
 - A **Raspberry Pi** 3B with Raspbian on it
 - a **RTL-SDR USB dongle** (I use the one from https://www.rtl-sdr.com/buy-rtl-sdr-dvb-t-dongles/)
-- a set of **weather sensors**. I use La Crosse TX29-IT (temperature), [TX35-IT (temperature + humidity)](SENSOR_Lacrosse_TX35.md), TX34-IT (rainmeter)
+- a set of **weather sensors**. I use La Crosse TX29-IT (temperature), [TX35-IT (temperature + humidity)](SENSOR_Lacrosse_TX35.md), [TX34-IT (rainmeter)](SENSOR_Lacrosse_TX34.md)
 - An **optional external web server with PHP and MySQL**, to store data remotlyy and eventually use a cloud-based software to view data
 - The Pi is protected by an **internet router** to not expose it to the internet
 
