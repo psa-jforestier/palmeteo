@@ -76,3 +76,31 @@ Station 2 - OpenWebRX
 I'm still looking for some data frame that may match my assumptions : is should have a region identifier (different from Station1 to Station2), data in common (for time sync), different data for weather forecast.
 
 The time sync frame should be sent with small variation, but I dont know how many times per hour they are sent.
+
+
+## OpenWebRX infamous hack to have better POCSAG formatting ##
+Open the Firefox JS console :
+```
+String.prototype.toHtmlEntities = function() {
+    return this.replace(/./gm, function(s) {
+        // return "&#" + s.charCodeAt(0) + ";";
+        return (s.match(/[a-z0-9\s]+/i)) ? s : "&#" + s.charCodeAt(0) + ";";
+    });
+};
+
+PocsagMessagePanel.prototype.pushMessage = function(msg) {
+    console.log(msg);
+    if (msg.message != "") 
+    {
+      console.log(msg.message);
+      var $b = $(this.el).find('tbody');
+      $b.append($(
+          '<tr>' +
+              '<td class="address">' + msg.address +
+              '<td class="message"><pre>' + new Date().toISOString() + ' | ' + msg.message.toHtmlEntities() + '</pre></td>' +
+          '</tr>'
+      ));
+      $b.scrollTop($b[0].scrollHeight);
+    }
+};
+```
