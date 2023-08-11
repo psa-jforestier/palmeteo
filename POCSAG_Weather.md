@@ -51,11 +51,6 @@ Station 2 - OpenWebRX
 12:31:54 11-08-23 kK<:HJHZI"I*I2I:IJJ"J*JBHI
 ```
 
+I'm still looking for some data frame that may match my assumptions : is should have a region identifier (different from Station1 to Station2), data in common (for time sync), different data for weather forecast.
 
-
-
-
-
-
-
-After a f
+The time sync frame should be sent with small variation, but I dont know how many times per hour they are sent.
