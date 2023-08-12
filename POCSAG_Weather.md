@@ -14,6 +14,7 @@ Documentation said, for the French version of a weather station :
 - 2/ Depending of the station area, the time can be +/- 2 minutes. Generally, time drifting is under a minute or a few seconds.
 - 3/ Default forecast location is Paris (dept n° 75). It can be change in the station (enter a number from 1 to 95). After initialization, forecast of the default location is displayed (even if you are far from this location).
 - 4/ In maximum 6h, the forecast for the selected area will be displayed
+- 5/ Forecast is split by quarter of day. Morning = 6h to 12h ; Afternoon = 12h to 18h ; Evening = 18h to 24h ; Night = 24h to 6h.
 ```
 
 **From 1/ and 2/** : we deduce the weather station do not use DCF77 (which can synchronize time in a minute). So time sync use the same type of receiver than the weather data. It should only have one frequency to receive all data (time + forecast).
@@ -25,6 +26,8 @@ Documentation said, for the French version of a weather station :
 Second option is most efficient.
 
 **From 4/** : by recording all POCSAG traffic in a 6h window, we should be able to view data related to forecast of Paris and of the local area.
+
+**From 5/** : we should notice some change of data frame at quarter of day
 
 ## About POCSAG
 
