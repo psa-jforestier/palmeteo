@@ -409,7 +409,6 @@ function sendToFolder($data, $where)
 				$data['model'])
 			);
       **/
-    var_dump($data);
     $filecontent = '';
     // If it is a temp/hygro sensor
     if ($data['temp']!==NULL)

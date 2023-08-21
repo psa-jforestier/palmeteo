@@ -27,7 +27,7 @@
   }
 
 
-  $dir = @$_REQUEST['dir'] + -90;
+  $dir = @$_REQUEST['dir'];
   $speed = @$_REQUEST['speed'] + 0.0;
   $speedunit = @$_REQUEST['speedunit'];
   
@@ -50,10 +50,20 @@
         $i++;
         break;
       }
+      case '-openweathermapfile': {
+        $f = $argv[$i+1];
+        $i++;
+        $data = json_decode(file_get_contents($f), true);
+        $dir = $data['wind']['deg'];
+        $speed = $data['wind']['speed'];
+        $speedunit = 'ms';
+        break;
+      }
     }
     $i++;
   }
   
+  $dir = $dir - 90.0;
   
   
   if ($speedunit == "kmh")
