@@ -426,6 +426,15 @@ function sendToFolder($data, $where)
         ($data['rain_raw'] ?? "n/a")
       );
     }
+    // If it is a wind sensor
+    if ($data['wind_max_m_s'] !== NULL)
+    {
+      $filecontent .= sprintf("Wind_max_ms=%s;Wind_avg_ms=%s;Wind_dir_deg=%s;",
+        ($data['wind_max_m_s'] ?? "n/a"),
+        ($data['wind_avg_m_s'] ?? "n/a"),
+        ($data['wind_dir_deg'] ?? "n/a")
+      );
+    }
     $filecontent .= sprintf("Lowbat=%d;Date_TS=%d;Date=%s;Id=%s;Model=%s\n",
       $data['lowbatt'],
       $data['date_ts'],
@@ -527,6 +536,7 @@ function handleString($s)
 			return 200;
     }
 
+
 		if (!isset($d['date_ts']))
 			$d['date_ts'] = strtotime($d['time']); // Must be a localtime
     if (isset($d['battery']))
@@ -537,6 +547,7 @@ function handleString($s)
 			'model'=>$d['model'],
 			'temp'=>@$d['temperature_C'], 'hygro'=>@$d['humidity'], 
       'rain_mm' => @$d['rain_mm'], 'rain_raw' => @$d['rain_raw'],
+      'wind_max_m_s' => @$d['wind_max_m_s'], 'wind_avg_m_s' => @$d['wind_avg_m_s'], 'wind_dir_deg' => @$d['wind_dir_deg'],
 			'info'=>'', 
 			'newbatt'=>$d['newbattery'], 'lowbatt'=>$d['lowbatt'], 
 			'signal'=>0, 'noise'=>0);

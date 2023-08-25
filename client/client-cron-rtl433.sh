@@ -34,22 +34,20 @@ date
 		then
 			OWM_RAIN=0
 		fi
-
+		(cd ../server/ && php windgraph.php -openweathermapfile /tmp.ram/openweathermap.dat > /usr/share/rpimonitor/web/img/wind.png)
+		(cd ../server/ && php windcli.php -openweathermapfile /tmp.ram/openweathermap.dat -windhisto windhistory.csv -windrosedata /usr/share/rpimonitor/web/img/windRoseData.csv )
 		echo {\"time\":\"$(date -d @$OWM_DATE +%Y-%m-%d' '%H:%M:%S)\", \"brand\":\"openweathermap\", \"model\":\"$(hostname)\", \"id\":\"OWM\", \"battery\":\"OK\", \"newbattery\":\"0\", \"temperature_C\":$OWM_TEMP, \"humidity\":$OWM_HUMI, \"rain_mm\":$OWM_RAIN} | tee -a /tmp.ram/weather.dat
 	fi
 
 
 	#echo $(date +%Y-%m-%d' '%H:%M:%S), $(date +%s), PI, $(./rpi_temperature.sh | cut -c 6-9), nan, 0, \(0/0\). | tee -a /tmp.ram/weather.dat
 	echo {\"time\":\"$(date +%Y-%m-%d' '%H:%M:%S)\", \"brand\":\"raspberry\", \"model\":\"$(hostname)\", \"id\":\"PI\", \"battery\":\"OK\", \"newbattery\":\"0\", \"temperature_C\":$(./rpi_temperature.sh | cut -c 6-9) } | tee -a /tmp.ram/weather.dat
-#	timeout $TIMEOUT_RECORDER \
-#		../bin/rtl_fm -R $(($TIMEOUT_RECORDER-$RTLFM_TIME_OVERHEAD)) -f 868000000 -M fm -s 500k -r 75k -g 42 -A fast | \
-#		../bin/rtl_868  | \
-#		tee -a /tmp.ram/weather.dat
+
     # old rtl433 client :
 	# ../bin/rtl_433 -G -g 50 -f 868300000 -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
 	
 	# new rtl433 client :
-	/home/jerome/rtl_433.2023/build/src/rtl_433 -f 868300000 -F http -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
+	/home/jerome/rtl_433.2023/build/src/rtl_433 -f 868300000 -s 250k -F http -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
 	ret="${PIPESTATUS[0]}"
 	echo "RTL_433 returned with value $ret"
 	if [ "$ret" -eq 2 ] || [ "$ret" -eq 3 ] || [ "$ret" -eq 5 ] 

@@ -28,7 +28,7 @@ function renderChart(data) {
       position: 'center'
     }, 
     legend: { 
-      title_label_text: 'Wind Speed (in mph)', 
+      title_label_text: 'Wind Speed (in kmh)', 
       position: 'bottom', 
       template: '%icon %name', 
       reversed: true
@@ -71,7 +71,7 @@ function renderChart(data) {
     ], 
     defaultPoint: { 
       tooltip: 
-        '<b>%seriesName</b> %xValueÂ° %yValue%'
+        '<b>%seriesName</b> %xValue °; %yValue%'
     }, 
     series: JSC.nest() 
       .key('speed') 

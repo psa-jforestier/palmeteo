@@ -3,32 +3,11 @@
 /**
  php windcli.php -dir ANGLE -speed SP -speedunit ms -windhisto windhistory.csv -windrosedata winddata.csv
 **/
+  include_once('beaufort.php');
 
-  function toBeaufort($speedkmh)
-  {// https://fr.wikipedia.org/wiki/%C3%89chelle_de_Beaufort
 
-    $BEAUF = array(
-      ["beauf"=>0, "k"=>1,  "r"=>200, "v"=>200, "b"=>200],
-      ["beauf"=>1, "k"=>5,  "r"=>204, "v"=>255, "b"=>255],
-      ["beauf"=>2, "k"=>11, "r"=>0x99, "v"=>255, "b"=>255],
-      ["beauf"=>3, "k"=>19, "r"=>0x66, "v"=>255, "b"=>255],
-      ["beauf"=>4, "k"=>28, "r"=>0, "v"=>255, "b"=>255],
-      ["beauf"=>5, "k"=>38, "r"=>0, "v"=>0xcc, "b"=>255],
-      ["beauf"=>6, "k"=>49, "r"=>0, "v"=>0x99, "b"=>255],
-      ["beauf"=>7, "k"=>61, "r"=>0, "v"=>0x66, "b"=>255],
-      ["beauf"=>8, "k"=>74, "r"=>0, "v"=>0, "b"=>255],
-      ["beauf"=>9, "k"=>88, "r"=>0, "v"=>0, "b"=>0xcc],
-      ["beauf"=>10, "k"=>102, "r"=>0, "v"=>0, "b"=>0x99],
-      ["beauf"=>11, "k"=>117, "r"=>0, "v"=>0, "b"=>0x66],
-      ["beauf"=>12, "k"=>999, "r"=>0, "v"=>0, "b"=>0]
-    );
-    foreach($BEAUF as $b)
-    {
-      if ($speedkmh <= $b['k'])
-        return $b;
-    }
-    return $BEAUF[12];
-  }
+  
+
   
   $i = 0;
   $speed = $dir = NULL;
@@ -185,9 +164,10 @@
           $d = @$data[$i][$b];
           if ($d !== NULL)
           {
+            $beauflabel = beaufortIndexToLabel($b);
             $percent = sprintf("%.3f", $d/$nbdata);
-            echo "Angle $i beauf $b seen $d times ($percent % )\n";
-            fputcsv($fd, array($i, $d, $percent));
+            echo "Angle $i beauf $b ($beauflabel) seen $d times ($percent % )\n";
+            fputcsv($fd, array($i, $beauflabel, $percent));
           }
         }
       }
