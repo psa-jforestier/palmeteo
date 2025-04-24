@@ -36,6 +36,9 @@ date
 		fi
 		(cd ../server/ && php windgraph.php -openweathermapfile /tmp.ram/openweathermap.dat > /usr/share/rpimonitor/web/img/wind.png)
 		(cd ../server/ && php windcli.php -openweathermapfile /tmp.ram/openweathermap.dat -windhisto windhistory.csv -windrosedata /usr/share/rpimonitor/web/img/windRoseData.csv )
+		(cp /usr/share/rpimonitor/web/img/windrose.png /tmp/windrose_$(date +'%Y%m%d%H%M').png)
+		# convert -delay 20 -loop 0 /tmp/*.png out.gif
+		(cd ../server/ && php windrose.php -windhisto windhistory.csv -nbdata 96 > /usr/share/rpimonitor/web/img/windrose.png )
 		echo {\"time\":\"$(date -d @$OWM_DATE +%Y-%m-%d' '%H:%M:%S)\", \"brand\":\"openweathermap\", \"model\":\"$(hostname)\", \"id\":\"OWM\", \"battery\":\"OK\", \"newbattery\":\"0\", \"temperature_C\":$OWM_TEMP, \"humidity\":$OWM_HUMI, \"rain_mm\":$OWM_RAIN} | tee -a /tmp.ram/weather.dat
 	fi
 
@@ -47,7 +50,8 @@ date
 	# ../bin/rtl_433 -G -g 50 -f 868300000 -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
 	
 	# new rtl433 client :
-	/home/jerome/rtl_433.2023/build/src/rtl_433 -f 868300000 -s 250k -F http -F json -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
+	export ALLOWED_SENSOR="-R 119 -R 75 -R 76 -R 206" 
+	/home/jerome/rtl_433.2023/build/src/rtl_433 -f 868300000 $ALLOWED_SENSOR -s 250k -F http -F json -M protocol -T $TIMEOUT_RECORDER | tee -a /tmp.ram/weather.dat
 	ret="${PIPESTATUS[0]}"
 	echo "RTL_433 returned with value $ret"
 	if [ "$ret" -eq 2 ] || [ "$ret" -eq 3 ] || [ "$ret" -eq 5 ] 
