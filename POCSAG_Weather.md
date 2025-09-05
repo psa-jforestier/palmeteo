@@ -6,7 +6,7 @@ Some weather station (Lacrosse Starmeteo) can receive weather forecast and time 
 
 ## StarMeteo / MeteoFrance / WETTERdirekt protocols
 
-The protocol for weather forecast has not been reversed for now. We can have some assumption by reading the Lacrosse documentation of such weather station (search for WD2900, WD6000 user manual ).
+The protocol for weather forecast has not been reversed for now. We can have some assumption by reading the Lacrosse documentation of such weather station (search for WD2900, WD4203, WD4935, WD6000, WD9541 user manual ).
 
 Documentation said, for the French version of a weather station :
 ```
