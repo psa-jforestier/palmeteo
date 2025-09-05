@@ -40,7 +40,7 @@ Each POCSAG data frame is made of :
 
 ## Receiver POCSAG data frame
 
-With a rtl-sdr station 1 (SDR# + PDW as the POCSAG decdoer) and an OpenWebRX station 2, separated 200km from each other, I noticed the following thing :
+With a rtl-sdr station 1 (SDR# + PDW as the POCSAG decdoer) and an OpenWebRX station 2 (http://sdr001.zapto.org:8073/#freq=466205010,mod=empty,secondary_mod=page,sql=-150), separated 200km from each other, I noticed the following thing :
 
 - Because this stations are far from each other, weather forecast should be different
 - But the time synchro must be the same
