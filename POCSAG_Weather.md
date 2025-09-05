@@ -14,7 +14,10 @@ Documentation said, for the French version of a weather station :
 - 2/ Depending of the station area, the time can be +/- 2 minutes. Generally, time drifting is under a minute or a few seconds.
 - 3/ Default forecast location is Paris (dept n° 75). It can be change in the station (enter a number from 1 to 95). After initialization, forecast of the default location is displayed (even if you are far from this location).
 - 4/ In maximum 6h, the forecast for the selected area will be displayed
-- 5/ Forecast is split by quarter of day. Morning = 6h to 12h ; Afternoon = 12h to 18h ; Evening = 18h to 24h ; Night = 24h to 6h.
+- 5/ Forecast is split by quarter of day. Morning = 6h to 12h ; Afternoon = 12h to 18h ; Evening = 18h to 24h ; Night = 24h to 6h. There is 24 different icons for day forcast, and 12 for night.
+- 6/ WD4203 is able to display a scrolling text with 63 different texts (like Sunny, Cloudy...). There is forcast text for current day + quarters for three days.
+- 7/ There is a storm alarm.
+- 8/ The icon is made of sun, cloud, filled cloud, one rain drop, two rain drops, four rain drops, lightning strike, one snow flake, three snow flakes, moon (10 informations)
 ```
 
 **From 1/ and 2/** : we deduce the weather station do not use DCF77 (which can synchronize time in a minute). So time sync use the same type of receiver than the weather data. It should only have one frequency to receive all data (time + forecast).
@@ -28,6 +31,12 @@ Second option is most efficient.
 **From 4/** : by recording all POCSAG traffic in a 6h window, we should be able to view data related to forecast of Paris and of the local area.
 
 **From 5/** : we should notice some change of data frame at quarter of day
+
+We can assume that a forecast is a value from 0 to 63, so 6 bits. With this value, it is possible to have the text and the icon. If the signal include current day (made of 4 quarters) + night + 3 forecast days, we can have a data payload of `(4+1+3) x 6` = 48 data bits. 
+
+We must add the date and time and the area. Assuming the time is only the hour, we need to encode `dd mm yyyy hh` digits. In BCD encoding, a digit (from 0 to 9) is encoded in 4 bits, so the datetime can take `(2+2+4+2)x4` = 40 bits. But we can compress by using a custom coding instead BCD : 5 bits for days (0..31), 4 bits for month (0..15), 7 bits for year (from 2000 to 2127), 5 bits for hours (0..23) to `5+4+7+5` = 21 bits.
+
+Total : `48 + 21` = 69 bits.
 
 ## About POCSAG
 
