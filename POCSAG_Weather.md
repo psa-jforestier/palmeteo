@@ -2,7 +2,7 @@
 
 ! This is widely work in progress. Use github issue to comment !
 
-Some weather station (Lacrosse Starmeteo) can receive weather forecast and time synchronization without being connected to internet. They do not use DCF77 or other low-frequency time sync. It seems they use the POCSA protocol on 466MHz.
+Some weather station (Lacrosse Starmeteo) can receive weather forecast and time synchronization without being connected to internet. They do not use DCF77 or other low-frequency time sync. It seems they use the POCSAG protocol on 466MHz.
 
 ## StarMeteo / MeteoFrance / WETTERdirekt protocols
 
