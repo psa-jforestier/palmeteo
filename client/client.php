@@ -3,7 +3,7 @@
  ** Client side of Palmeteo.
  ** Must be launch in command line.
  **
- ** params : client.php [file_to_read] [-dr | --dry-run] [-l | --loop] [-re | --retry-on-error]
+ ** params : client.php [file_to_read] [-dr | --dry-run] [-l | --loop] [-re | --retry-on-error] [--output xx]
  **
  ** timeout 50 rtl_fm -f 868.26e6 -M fm -s 500k -r 75k -g 42 -A fast - | bin/rtl_868 -v | php client.php -v -dr
  **  rtl_fm -f 868.26e6 -M fm -s 500k -r 75k -g 42 -A fast - | ../bin/rtl_868 -v > temperature.dat
@@ -51,7 +51,7 @@ $file = "php://stdin";
 $verbose = false;
 while($i < $argc)
 {
-	$param = $argv[$i];
+	$param = $argv[$i];	
 	switch($param) {
 		case "-h":
 		case "-help":
@@ -66,6 +66,7 @@ while($i < $argc)
 		}
 		case "-o":
 		case "--output": {
+			
 			$CONFIG['output'] = $argv[$i+1];
 			$i++;
 			if ($CONFIG['output'] == 'folder')
@@ -73,7 +74,7 @@ while($i < $argc)
 				$CONFIG['folder'] = $argv[$i+1];
 				$i++;
 			}
-			break;
+			break;			
 		}
 		case "-f":
 		case "--format": {
@@ -171,29 +172,34 @@ exit($returncode);
 function sendToOpenWeatherMap($data)
 // https://openweathermap.org/stations
 {
-	global $CONFIG;
+	global $CONFIG;	
 	
-	$sensorId = $data['sensorId'];
-	$OWM = @$CONFIG['OWM'][$sensorId];
+	$sensorId = $data['model'].'_'.$data['sensorId'];
+	$owm_station_id = @$CONFIG['OWM'][$sensorId];
+	//echo "Searching for OWM $sensorId\n";
+	//echo "owm station id :\n";
+	//var_dump($owm_station_id);
 	
-	if ($OWM == null)
+	if ($owm_station_id == null)
 	{
 		// 1st time we see this sensor in this roll. 
 		// Try to get OWM station ID
-		// List all stations for this account
-		$owmId = null;
+		// List all stations for this account 
 		$url = 'http://api.openweathermap.org/data/3.0/stations?APPID='.$CONFIG['openWeatherMap.appId'];
 		$res = curl_get_json($url);
-		foreach($res['content'] as $owdStations)
+		foreach($res['content'] as $owmStations)
 		{
-			if ($owdStations->external_id == $sensorId)
-			{
-				$owmId = $owdStations->id;
-				break;
-			}
+			$CONFIG['OWM'][$owmStations->external_id] = $owmStations->id;
 		}
-		if ($owmId === null) // No station found
+		$OWM = $CONFIG['OWM'];
+		//echo "Now, I know this stations :\n";
+		//var_dump($OWM);
+		
+		//echo "Searching again for OWM $sensorId\n";
+		$owm_station_id = @$CONFIG['OWM'][$sensorId];
+		if ($owm_station_id == null)
 		{
+			echo " This station must be created\n";
 			// Create a new station
 			$url = 'http://api.openweathermap.org/data/3.0/stations?APPID='.$CONFIG['openWeatherMap.appId'];
 			$post_params = array(
@@ -206,22 +212,18 @@ function sendToOpenWeatherMap($data)
 			$res = curl_post_json($url, $post_params);
 			if ($res['code'] == 201)
 			{
-				$CONFIG['OWM'][$sensorId] = $res['content'];
-				$OWM = $CONFIG['OWM'][$sensorId];
-				$owmId = $res['content']->ID;
+				$CONFIG['OWM'][$sensorId] = $res['content']->ID;
+				$owm_station_id = $res['content']->ID;
 			}
 		}
-		if ($CONFIG['verbose'] === true)
-			echo "Sensor $sensorId match with OWM station id $owmId\n";
+		
 	}
-	else
-	{
-		$owmId = $OWM->ID;
-	}
+	//echo "Found a owm_station_id $owm_station_id\n";
+	
 	// Post data to this station
 	$url = 'http://api.openweathermap.org/data/3.0/measurements?APPID='.$CONFIG['openWeatherMap.appId'];
 	$owdData = array(
-			'station_id'=>$owmId,
+			'station_id'=>$owm_station_id,
 			'dt'=>0 + $data['date_ts'],
 			'temperature'=>0 + $data['temp']
 	);
@@ -239,7 +241,7 @@ function sendToOpenWeatherMap($data)
 		echo ".";
 		return 200;
 	}
-
+	
 }
 
 function curl_get_json($url)
@@ -322,8 +324,29 @@ function curl_delete_json($url)
 	curl_close($ch);
 	return array('code'=>$httpcode, 'content'=>json_decode($result));
 }
+
+function ms_to_mph($ms)
+{
+    // 1 meter = 0.00062137119223733 miles
+    // 1 second = 1/3600 hours, so multiply by 3600 to convert per-second to per-hour
+    // Combined factor: 0.00062137119223733 * 3600 = 2.236936292053
+    if (!is_numeric($ms)) {
+        return null;
+    }
+    $conversion_factor = 2.236936292053; // 1 m/s = 2.236936292053 mph
+    return (float) ($ms * $conversion_factor);
+}
+function mm_to_inch($mm)
+{
+    // 1 millimeter = 0.039370078740157 inches
+    if (!is_numeric($mm)) {
+        return null;
+    }
+    $conversion_factor = 0.039370078740157;
+    return (float) ($mm * $conversion_factor);
+}
 function sendToWeatherUnderground($data)
-// http://wiki.wunderground.com/index.php/PWS_-_Upload_Protocol
+// https://support.weather.com/s/article/PWS-Upload-Protocol?language=en_US
 {
 	global $CONFIG;
 	$dateutc = gmdate('Y-m-d H:i:s', strtotime($data['date']));
@@ -349,14 +372,22 @@ function sendToWeatherUnderground($data)
 	{
 		if ($data['sensorId'] == $CONFIG['sensorIdExternal'])
 		{
+			return 200;
 			$url = $url . "&tempf=$temp_f";
 		}
 		else
 		{
-			//$sensorWuid = $CONFIG['sensorIdMapping'][$data['sensorId']];
-			//$url = $url . "&temp${sensorWuid}f=$temp_f&humidity=$hygro";
-			// WU have a bug : cant send data to different sensor
-			return 200;
+			if ($data['model'] == $CONFIG['sensorIdExternalWind'])
+			{
+				$url = $url . "&tempf=$temp_f&humidity=$hygro&winddir=${data['wind_dir_deg']}&windgustmph=".ms_to_mph($data['wind_max_m_s'])."&windspeedmph=".ms_to_mph($data['wind_avg_m_s'])."&rainin=".mm_to_inch($data['rain_mm']);
+			}
+			else
+			{
+				//$sensorWuid = $CONFIG['sensorIdMapping'][$data['sensorId']];
+				//$url = $url . "&temp${sensorWuid}f=$temp_f&humidity=$hygro";
+				// WU have a bug : cant send data to different sensor
+				return 200;
+			}
 		}
 	}
 	$url = $url . "&realtime=1&rtfreq=2.5&softwaretype=".urlencode("PalmeteoPHPLib");
@@ -365,7 +396,6 @@ function sendToWeatherUnderground($data)
 		echo "Weatherunderground data handler : $url\r\n";
 	}
 	echo ".";
-	
 	if ($CONFIG['dryrun'] === false)
 	{
 		$r = curl_get($url);
@@ -528,13 +558,13 @@ function handleString($s)
 	else if ($CONFIG['format'] == 'json')
 	{
 		$d = json_decode($s, true, 4);
-    if ($d === null || $d == "" ||
-      (!isset($d['time']) || !isset($d['id']) )
-    )
-    {
-      echo "Skipping line because it is an invalid json : $s\r\n";
+		if ($d === null || $d == "" ||
+		(!isset($d['time']) || !isset($d['id']) )
+		)
+		{
+			if ($s != '') echo "Skipping line because it is an invalid json : $s\r\n";
 			return 200;
-    }
+		}
 
 
 		if (!isset($d['date_ts']))
@@ -549,7 +579,7 @@ function handleString($s)
       'rain_mm' => @$d['rain_mm'], 'rain_raw' => @$d['rain_raw'],
       'wind_max_m_s' => @$d['wind_max_m_s'], 'wind_avg_m_s' => @$d['wind_avg_m_s'], 'wind_dir_deg' => @$d['wind_dir_deg'],
 			'info'=>'', 
-			'newbatt'=>$d['newbattery'], 'lowbatt'=>$d['lowbatt'], 
+			'newbatt'=>@$d['newbattery'], 'lowbatt'=>$d['lowbatt'], 
 			'signal'=>0, 'noise'=>0);
 	}
 	else
@@ -560,7 +590,7 @@ function handleString($s)
 	{
 		print_r($data);
 	}
-	$result = 0;
+	$result = 0;	
 	if ($CONFIG['output'] === 'default')
 		$result = sendToDefault($data);
 	else if ($CONFIG['output'] === 'wu')

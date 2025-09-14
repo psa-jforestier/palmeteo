@@ -91,6 +91,28 @@ date
 		retrylater=1
 	fi
 	
+	# Push to Weather Underground https://www.wunderground.com/dashboard/pws/ICORME5
+	timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output wu
+	export ret=$?
+	if [ "$ret" -eq 0 ]
+	then
+		echo "Data successfully send to Weather Underground"
+	else
+		echo "Error $ret while sending to Weather Underground, will retry later"
+		retrylater=1
+	fi
+	
+	# Push to OpenWeatherMap (no dashboard availble on this site https://openweathermap.org/stations#measurement)
+	timeout $TIMEOUT_SENDER php client.php /tmp.ram/weather.dat -f json --output owm
+	export ret=$?
+	if [ "$ret" -eq 0 ]
+	then
+		echo "Data successfully send to OWM OpenWeatherMap"
+	else
+		echo "Error $ret while sending to OpenWeatherMap, will retry later"
+		retrylater=1
+	fi
+	
 	if [ "$retrylater" -eq 0 ]
 	then
 		echo
