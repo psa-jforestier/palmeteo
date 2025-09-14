@@ -2,11 +2,11 @@
 
 ! This is widely work in progress. Use github issue to comment !
 
-Some weather station (Lacrosse Starmeteo) can receive weather forecast and time synchronization without being connected to internet. They do not use DCF77 or other low-frequency time sync. It seems they use the POCSA protocol on 466MHz.
+Some weather station (Lacrosse Starmeteo) can receive weather forecast and time synchronization without being connected to internet. They do not use DCF77 or other low-frequency time sync. It seems they use the POCSAG protocol on 466MHz.
 
 ## StarMeteo / MeteoFrance / WETTERdirekt protocols
 
-The protocol for weather forecast has not been reversed for now. We can have some assumption by reading the Lacrosse documentation of such weather station (search for WD2900, WD6000 user manual ).
+The protocol for weather forecast has not been reversed for now. We can have some assumption by reading the Lacrosse documentation of such weather station (search for WD2900, WD4203, WD4935, WD6000, WD9541 user manual ).
 
 Documentation said, for the French version of a weather station :
 ```
@@ -14,7 +14,10 @@ Documentation said, for the French version of a weather station :
 - 2/ Depending of the station area, the time can be +/- 2 minutes. Generally, time drifting is under a minute or a few seconds.
 - 3/ Default forecast location is Paris (dept n° 75). It can be change in the station (enter a number from 1 to 95). After initialization, forecast of the default location is displayed (even if you are far from this location).
 - 4/ In maximum 6h, the forecast for the selected area will be displayed
-- 5/ Forecast is split by quarter of day. Morning = 6h to 12h ; Afternoon = 12h to 18h ; Evening = 18h to 24h ; Night = 24h to 6h.
+- 5/ Forecast is split by quarter of day. Morning = 6h to 12h ; Afternoon = 12h to 18h ; Evening = 18h to 24h ; Night = 24h to 6h. There is 24 different icons for day forcast, and 12 for night.
+- 6/ WD4203 is able to display a scrolling text with 63 different texts (like Sunny, Cloudy...). There is forcast text for current day + quarters for three days.
+- 7/ There is a storm alarm.
+- 8/ The icon is made of sun, cloud, filled cloud, one rain drop, two rain drops, four rain drops, lightning strike, one snow flake, three snow flakes, moon (10 informations)
 ```
 
 **From 1/ and 2/** : we deduce the weather station do not use DCF77 (which can synchronize time in a minute). So time sync use the same type of receiver than the weather data. It should only have one frequency to receive all data (time + forecast).
@@ -29,6 +32,12 @@ Second option is most efficient.
 
 **From 5/** : we should notice some change of data frame at quarter of day
 
+We can assume that a forecast is a value from 0 to 63, so 6 bits. With this value, it is possible to have the text and the icon. If the signal include current day (made of 4 quarters) + night + 3 forecast days, we can have a data payload of `(4+1+3) x 6` = 48 data bits. 
+
+We must add the date and time and the area. Assuming the time is only the hour, we need to encode `dd mm yyyy hh` digits. In BCD encoding, a digit (from 0 to 9) is encoded in 4 bits, so the datetime can take `(2+2+4+2)x4` = 40 bits. But we can compress by using a custom coding instead BCD : 5 bits for days (0..31), 4 bits for month (0..15), 7 bits for year (from 2000 to 2127), 5 bits for hours (0..23) to `5+4+7+5` = 21 bits.
+
+Total : `48 + 21` = 69 bits.
+
 ## About POCSAG
 
 POCSAG protocol is a regional UHF (466Mhz) protocol . A POCSAG transmitter send signal to maybe 50Km at max. So there is a mesh of POCSAG transmitter all over the country. They are connected to each other via Satellite link or internet.
@@ -40,7 +49,7 @@ Each POCSAG data frame is made of :
 
 ## Receiver POCSAG data frame
 
-With a rtl-sdr station 1 (SDR# + PDW as the POCSAG decdoer) and an OpenWebRX station 2, separated 200km from each other, I noticed the following thing :
+With a rtl-sdr station 1 (SDR# + PDW as the POCSAG decdoer) and an OpenWebRX station 2 (http://sdr001.zapto.org:8073/#freq=466205010,mod=empty,secondary_mod=page,sql=-150), separated 200km from each other, I noticed the following thing :
 
 - Because this stations are far from each other, weather forecast should be different
 - But the time synchro must be the same
