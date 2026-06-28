@@ -2,7 +2,7 @@
 
 ! This is widely work in progress. Use github issue to comment !
 
-Some weather station (Lacrosse Starmeteo) can receive weather forecast and time synchronization without being connected to internet. They do not use DCF77 or other low-frequency time sync. It seems they use the POCSAG protocol on 466MHz.
+Some weather station (La Crosse Starmeteo) can receive weather forecast and time synchronization without being connected to internet. They do not use DCF77 or other low-frequency time sync. It seems they use the POCSAG protocol on 466MHz.
 
 ## StarMeteo / MeteoFrance / WETTERdirekt protocols
 
@@ -38,6 +38,12 @@ We must add the date and time and the area. Assuming the time is only the hour, 
 
 Total : `48 + 21` = 69 bits.
 
+A special debug mode in a Weather Station see some data received (Credit : https://forum.tetrahub.net/post93165.html#p93165)
+```
+-> Long press on "SET" : this is the department configuration page
+-> Press on "+" and do not release the button !
+-> Long press again on "SET" : this is the debug page
+```
 ## About POCSAG
 
 POCSAG protocol is a regional UHF (466Mhz) protocol . A POCSAG transmitter send signal to maybe 50Km at max. So there is a mesh of POCSAG transmitter all over the country. They are connected to each other via Satellite link or internet.
