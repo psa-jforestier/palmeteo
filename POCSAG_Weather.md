@@ -105,20 +105,49 @@ String.prototype.toHtmlEntities = function() {
         return (s.match(/[a-z0-9\s]+/i)) ? s : "&#" + s.charCodeAt(0) + ";";
     });
 };
-
-PocsagMessagePanel.prototype.pushMessage = function(msg) {
-    console.log(msg);
+POCSAG = [];
+PocsagMessagePanel.prototype.pushMessage = function(msg) {   
     if (msg.message != "") 
     {
-      console.log(msg.message);
+      msg.when = new Date().toISOString();
+      console.log(msg);
       var $b = $(this.el).find('tbody');
       $b.append($(
           '<tr>' +
               '<td class="address">' + msg.address +
-              '<td class="message"><pre>' + new Date().toISOString() + ' | ' + msg.message.toHtmlEntities() + '</pre></td>' +
+              '<td class="message" valign="top"><pre>' + new Date().toISOString() + ' | ' + msg.message.toHtmlEntities() + '</pre></td>' +
           '</tr>'
       ));
       $b.scrollTop($b[0].scrollHeight);
+	  POCSAG.push(msg);
     }
 };
+
+PocsagMessagePanel.prototype.saveToFile = function()
+/** call this function to download locally the data **/
+{
+	const pad = n => String(n).padStart(2,'0');
+
+	const d = new Date();
+	const filename =
+	  `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}-` +
+	  `${pad(d.getHours())}-${pad(d.getMinutes())}-${pad(d.getSeconds())}.jsonl`;
+
+	const text = (Array.isArray(POCSAG) ? POCSAG : [POCSAG])
+	  .map(o => JSON.stringify(o))
+	  .join(',\n');
+
+	const blob = new Blob([text], { type: "application/jsonl;charset=utf-8" });
+	const url = URL.createObjectURL(blob);
+
+	const a = document.createElement("a");
+	a.href = url;
+	a.download = filename;
+	document.body.appendChild(a);
+	a.click();
+	a.remove();
+
+	URL.revokeObjectURL(url);
+}
+JSON.stringify(POCSAG);
 ```
