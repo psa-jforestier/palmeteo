@@ -32,7 +32,7 @@ Goal : from a random weather forecast, generate a valid data frame.
 
 Technical challenge here to re-transmit data fram, because the 466MHz band is not a public ISM band. Need to be carefull on transmit power and frequency. 466.205MHz is used by private POCSAG service, it is not allowed to use this frequency.
 
-## 4/ Basic re-implementation
+## 4/ Basic software re-implementation
 
 25% done
 
@@ -47,5 +47,17 @@ Tools to be created :
 - sm_forecast : to code or decode a weather forceast data frame
 - sm_send : to send POCSAG data frame to the weather station
 
+Device used to send information over-the-air : Raspberry Pi with rpitx, or arduino, or Airspy or any 466MHz capable device (same warning than 3/ : do not mess with this frequency).
 
+## 5/ Hardware re-implementation
+
+0% done
+
+Goal : standalone hardware to reborn the weather station.
+
+A low power device (Arduino ? Pi-Zero ?) used to recreate Starmeteo data frame and re-send them to the weather station.
+
+## 6/ ...
+
+## 7/ Profit !
 
