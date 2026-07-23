@@ -1,6 +1,6 @@
 An attempt to create a set of tool to reborn your La Crosse / StarMeteo weather station.
 
-Mostly based on work available from https://forum.tetrahub.net/decodage-meteo/meteofrance-pocsag-t5935.html
+Mostly based on work available from https://forum.tetrahub.net/decodage-meteo/meteofrance-pocsag-t5935.html and https://www.mikrocontroller.net/topic/464834
 
 # Roadmap
 
