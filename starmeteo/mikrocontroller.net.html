@@ -1,0 +1,3521 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  <title>
+      WeatherDirect weather station crafts - Mikrocontroller.net
+  </title>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="preload" href="https://www.mikrocontroller.net/assets/source-sans-3-latin-400-normal-65a60efebc5dea9c72a07c2064230a91ac5c4720b1e2068b8bf944bbb49157b7.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+	<link rel="stylesheet" href="WeatherDirect%20weather%20station%20crafts%20-%20Mikrocontroller.net_fichiers/screen-aa6f569b37ea5c0f26879c9171460d8cb1b7b0bc87911d5f0f1e5.css" media="all">
+    <link rel="stylesheet" href="WeatherDirect%20weather%20station%20crafts%20-%20Mikrocontroller.net_fichiers/print-dddfec7d2cc702bbb4faa343d6939fa611e15db635673586433684.css" media="print">
+
+  <link rel="icon" href="https://www.mikrocontroller.net/favicon.ico" sizes="32x32">
+  <link rel="icon" href="https://www.mikrocontroller.net/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="https://www.mikrocontroller.net/apple-touch-icon.png">
+  <link rel="canonical" href="https://www.mikrocontroller.net/topic/464834">
+
+	<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="Gphg5cdfi-yJb684NkkmXjIpSF-liUe6aoLM-zlIMLQM4IbgJm72lYBratO7QhPJk3RwPVJudbHljYQ6nh1PXg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+	  	"@type": "ListItem",
+		  "position": 1,
+	    "name": "HF, Funk und Felder",
+      "item": "https://www.mikrocontroller.net/forum/17"
+    }]
+  }
+</script>
+
+<!-- OpenGraph & JSON-LD metadata -->
+<meta property="og:site_name" content="Mikrocontroller.net">
+<meta property="og:title" content="WetterDirekt Wetterstation Basteleien">
+
+
+<style>
+
+
+</style>
+
+<script>
+  var user = {"name":null,"role":null,"posts_per_page":200};
+
+  var topic_read_times = {};
+  var user_post_votes = {};
+  var post_scores = {};
+  var post_num_up_votes = {};
+  var post_num_down_votes = {};
+  var post_num_votes = {};
+</script>
+
+
+
+  <link rel="alternate" type="application/atom+xml" title="Mikrocontroller.net Newsfeed" href="https://www.mikrocontroller.net/newsfeed">
+
+  <!-- Forum Feeds -->
+  <link rel="alternate" type="application/atom+xml" title="Neue Beiträge in allen Foren" href="https://www.mikrocontroller.net/feed/global">
+   <link rel="alternate" type="application/atom+xml" title="Neue Beiträge im Forum &quot;HF, Funk und Felder&quot;" href="https://www.mikrocontroller.net/feed/forum/17"> 
+   <link rel="alternate" type="application/atom+xml" title="Neue Beiträge im Thread &quot;WetterDirekt Wetterstation Basteleien&quot;" href="https://www.mikrocontroller.net/feed/topic/464834"> 
+  
+  <!-- / Forum Feeds -->
+
+    <meta name="robots" content="NOODP">
+
+  <link rel="search" type="application/opensearchdescription+xml" title="Mikrocontroller.net" href="https://www.mikrocontroller.net/searchplugin.xml">
+
+<script src="WeatherDirect%20weather%20station%20crafts%20-%20Mikrocontroller.net_fichiers/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script src="WeatherDirect%20weather%20station%20crafts%20-%20Mikrocontroller.net_fichiers/application-7c9fdcf7353b7db16ef422db185cc7c75287abac1136c662f.js"></script>
+
+  <script>
+jQuery(document).ready(function() {
+  setTimeout(function() {
+    if ($('#sdfj391').is(':visible') && !$('#adliste').is(':visible')) {
+      if (parseInt(localStorage.getItem('adblock-notice-counter') || 0) > 5 && parseInt(localStorage.getItem('adblock-notice-counter') || 0) <= 14) {
+        $('#content').before('<div class="card">Lieber AdBlock-Nutzer, wir mögen störende, blinkende Flash-Anzeigen genauso wenig wie du. Deshalb zeigt Mikrocontroller.net ausschließlich nicht animierte Text- und Bildanzeigen an. Vielleicht möchtest du AdBlock für diese Seite deaktivieren? (Diese Meldung verschwindet automatisch nach ein paar Seitenaufrufen.)</div>');
+      }
+      if (typeof localStorage != 'undefined') {
+        localStorage.setItem('adblock-notice-counter', 1 + parseInt(localStorage.getItem('adblock-notice-counter') || 0));
+      }
+    }
+  }, 100);
+});
+  </script>
+
+
+<script async="async" src="WeatherDirect%20weather%20station%20crafts%20-%20Mikrocontroller.net_fichiers/googletagservices_gpt.js"></script>
+<script>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    googletag.cmd.push(function () {
+        var mappingRightSidebar = googletag.sizeMapping().addSize([0, 0], [300, 250]).addSize([800, 600], [[300, 600], [300, 250], [160, 600]]).build();
+        var mappingLeftSidebar = googletag.sizeMapping().addSize([1250, 600], [[160, 600]]).build();
+        googletag.pubads().setForceSafeFrame(true);
+        googletag.pubads().setSafeFrameConfig({
+            allowOverlayExpansion: false,
+            allowPushExpansion: false,
+            sandbox: true
+        });
+        googletag.pubads().setPrivacySettings({
+            restrictDataProcessing: true,
+            nonPersonalizedAds: true
+        });
+        googletag.pubads().setTargeting("pagetype", "topic");
+        googletag.pubads().setTargeting("section", "forum-17");
+        googletag.pubads().setTargeting("forum_id", "17");
+        googletag.pubads().setTargeting("mikro-categories", ["wireless-rf","embedded-software","passives"]);
+        googletag.defineSlot('/62616433/Mikrocontroller_Right_Sidebar_1', [[160, 600], [300, 600], [300, 250]], 'div-gpt-ad-1549487225707-0').defineSizeMapping(mappingRightSidebar).addService(googletag.pubads());
+        googletag.defineSlot('/62616433/Mikrocontroller_Left_Sidebar_1', [160, 600], 'div-gpt-ad-1549567092597-0').defineSizeMapping(mappingLeftSidebar).addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+    });
+</script>
+
+<script async="" src="WeatherDirect%20weather%20station%20crafts%20-%20Mikrocontroller.net_fichiers/google-analytics_analytics.js"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+
+var gaProperty = 'G-SQJVSC8FV3';
+
+gtag('set', 'ads_data_redaction', true);
+
+gtag('js', new Date());
+gtag('set', {
+  'forum_id': '17',
+  'user_type': 'Guest'
+});
+gtag('config', gaProperty, {
+  'anonymize_ip': true,
+  'allow_ad_personalization_signals': false,
+  'allow_google_signals': false
+});
+</script>
+
+
+
+<meta name="google-translate-customization" content="5ced0b84f202ea5b-ae0c3756d2b00e02-g6a9f31b5bb528ccf-17">
+
+</head>
+
+<body class="">
+    <header>
+  <div class="topbar">
+
+    <a class="topbar-logo" href="https://www.mikrocontroller.net/">
+        <img src="WeatherDirect%20weather%20station%20crafts%20-%20Mikrocontroller.net_fichiers/logo.svg" alt="Mikrocontroller.net" class="logo">
+    </a>
+
+      <nav id="topbar-nav" class="topbar-nav" aria-label="Main areas">
+          <a href="https://www.mikrocontroller.net/">News</a>
+          <a href="https://www.mikrocontroller.net/articles/Hauptseite">Article</a>
+          <a href="https://www.mikrocontroller.net/forum" aria-current="true">Forum</a>
+      </nav>
+
+    <div class="topbar-spacer"></div>
+
+    <a class="topbar-search-link" href="https://www.mikrocontroller.net/search" aria-label="Suchen">
+      <svg class="ui-icon ui-icon-search" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="3.75"></circle><path d="M9.75 9.75 13 13"></path></svg>
+    </a>
+
+    <form action="/search" class="topbar-search" role="search">
+      <input name="query" type="search" placeholder="Search" aria-label="Search">
+      <button type="submit" class="topbar-search-go" aria-label="Search">
+        <svg class="ui-icon ui-icon-search" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="3.75"></circle><path d="M9.75 9.75 13 13"></path></svg>
+      </button>
+    </form>
+
+      <a class="topbar-login" href="https://www.mikrocontroller.net/user/login">Login</a>
+  </div>
+</header>
+
+<div id="outer-container">
+
+  <table id="twocolumns">
+  <tbody><tr>
+  <td id="sidebar-left" class="sidebar">
+
+<!-- begin nav -->
+<div class="nav-container">
+  <ul class="nav-icons">
+    <li>
+      <ul>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/all"><i class="icons mikro-all"></i>All contributions</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/mikrocontroller-elektronik"><i class="icons mikro-mikrocontroller-elektronik"></i>μC &amp; Electronics</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/analogtechnik"><i class="icons mikro-analogtechnik"></i>Analog technology</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/hf"><i class="icons mikro-hf"></i>HF, radio &amp; fields</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/platinen"><i class="icons mikro-platinen"></i>PCBs</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/mechanik"><i class="icons mikro-mechanik"></i>Mechanics &amp; Tools</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/fahrzeugelektronik"><i class="icons mikro-fahrzeugelektronik"></i>Vehicle electronics</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/hausbus"><i class="icons mikro-hausbus"></i>Home &amp; Smart Home</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/gcc"><i class="icons mikro-gcc"></i>Compiler &amp; IDEs</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/fpga-vhdl-cpld"><i class="icons mikro-fpga-vhdl-cpld"></i>FPGA, VHDL &amp; Co.</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/dsp"><i class="icons mikro-dsp"></i>DSP</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/pc-programmierung"><i class="icons mikro-pc-programmierung"></i>PC Programming</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/pc-hardware-software"><i class="icons mikro-pc-hardware-software"></i>PC hardware &amp; software</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/codesammlung"><i class="icons mikro-codesammlung"></i>Projects &amp; Code</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/markt"><i class="icons mikro-markt"></i>Market</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/ausbildung-studium-beruf"><i class="icons mikro-ausbildung-studium-beruf"></i>Training &amp; Occupation</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/offtopic"><i class="icons mikro-offtopic"></i>Offtopic</a>
+        </li>
+        <li>
+            <a href="https://www.mikrocontroller.net/forum/website"><i class="icons mikro-website"></i>Website</a>
+        </li>
+       </ul>
+    </li>
+    <li>
+      <ul class="nav-extra">
+        <li>
+            <a href="https://www.mikrocontroller.net/attachment/gallery"><span class="icons"><svg class="ui-icon ui-icon-gallery" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="1.25"></rect><path d="M2.4 10.6 5.5 7.9l2.6 2.2 2.3-2 3.2 2.8"></path><circle cx="10.4" cy="6.1" r="1.05" fill="currentColor" stroke="none"></circle></svg></span>Picture gallery</a>
+        </li>
+      </ul>
+    </li>
+<!--    <li><b><a href="/buecher/">Buchtipps</a></b></li>-->
+<!--    <li><b><a href="http://shop.mikrocontroller.net/">Shop</a></b></li>-->
+<!--    <li><b><a href="/articles/Linksammlung">Linksammlung</a></b></li>-->
+  </ul>
+</div>
+<!-- end nav -->
+
+
+<div id="adliste" class="adtxt adunit bannerad"></div>
+<div id="sdfj391"></div>
+
+  <hr>
+  <div class="ad-slot-label">Display</div>
+  <div id="first-adframe" class="adframe sticky" style="padding: 0;margin:0; text-align: center; ">
+    <!-- /62616433/Mikrocontroller_Left_Sidebar_1 -->
+    <div id="div-gpt-ad-1549567092597-0" style="height:600px; width:160px;">
+    <script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1549567092597-0'); });
+    </script>
+    </div>
+  </div>
+  <div style="padding-top: 10px;"></div>
+  </td>
+  <td id="main">
+
+<div id="container">
+    <!-- contentDetection start -->
+    <!-- google_ad_section_start -->
+    <nav class="crumb" aria-label="Navigation path">
+    
+      <a href="https://www.mikrocontroller.net/forum/hf">HF, radio and fields</a>
+    <span class="crumb-separator" aria-hidden="true">›</span>
+      <span aria-current="page">Thread</span>
+</nav>
+
+			<h1 id="pageName">WeatherDirect Weather Station Crafting</h1>
+
+
+
+
+  <div class="card">Dear AdBlock user, we don't like annoying, flashing 
+flash ads any more than you do. Therefore, Mikrocontroller.net only 
+displays unanimated text and image displays. Maybe you want to disable 
+AdBlock for this page? (This message disappears automatically after a 
+few page views.)</div><div id="content">
+    <div class="forum">
+  <div class="topic  " id="topic" data-id="464834" data-user-id="31917">
+
+
+    
+    
+
+    <script>
+    have_newpost_anchor = false;
+    topic_last_read_at = getLastReadAt(464834);
+    </script>
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1544965159000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5660356" class="post root-post  post-userid-31917 post-id-5660356" data-attributionline="Michael M. schrieb im Beitrag #5660356:" data-created-at="1544965159000" data-updated-at="1544965159000" data-user-id="31917" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">MM</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/do7tla">Michael M.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/do7tla">(do7tla)</a>
+
+    <span class="post-badge" title="Thread Creator">OP</span>
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2018-12-16T13:59:19+01:00" data-moz-translations-id="0">16.12.2018 13:59</time></span>
+    <a class="post-anchor" href="#5660356" aria-label="Link to this post">#5660356</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5660356&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5660356&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre>Hello
+Has anyone with the weather stations of WetterDirekt (WD xxxx) 
+busy?
+These get the weather information about the pager network of the E*Message 
+GmbH.
+
+The station is supposed to be on the frequency 465,970MHz the weather information 
+received.
+
+The frequencies 466,075MHz and 466,230MHz are also from the E*Message 
+GmbH operated.
+
+I have the frequency for the test with a radio scanner and a software 
+465,970MHz observed.
+
+Only time and date information is transmitted.
+Weather information or other encrypted weather messages I could 
+Not yet received.
+
+In addition to the temperature information, will also be warnings and others 
+Weather reports transmitted in plain text?
+
+If the transmissions are encrypted then you could go to a 
+Weather station after the Decrypter IC the data tap?</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5660356#postform" onclick="return !forumInsertQuoting(5660356)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5660356#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-move"><a rel="nofollow" href="https://www.mikrocontroller.net/topic/move/464834">Thread verschieben</a></span> <span class="menuitem postmenuitem-lock"><a rel="nofollow" href="https://www.mikrocontroller.net/topic/lock/464834?token=8uPAcM97yQIwuzU4fQihmQitAIwjKX6YvubMb1xVjtfkmyZ1Lkq0ezm_8NPwA5QOqfA47tTOTJMx6YSu-wDxPQ">Thread sperren</a></span> <span class="menuitem postmenuitem-lock_for_guests"><a rel="nofollow" href="https://www.mikrocontroller.net/topic/lock_for_guests/464834?token=8uPAcM97yQIwuzU4fQihmQitAIwjKX6YvubMb1xVjtfkmyZ1Lkq0ezm_8NPwA5QOqfA47tTOTJMx6YSu-wDxPQ">Anmeldepflicht aktivieren</a></span> <span class="menuitem postmenuitem-set_sticky_true"><a rel="nofollow" href="https://www.mikrocontroller.net/topic/set_sticky_true/464834?token=8uPAcM97yQIwuzU4fQihmQitAIwjKX6YvubMb1xVjtfkmyZ1Lkq0ezm_8NPwA5QOqfA47tTOTJMx6YSu-wDxPQ">Anpinnen</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5660356?token=8uPAcM97yQIwuzU4fQihmQitAIwjKX6YvubMb1xVjtfkmyZ1Lkq0ezm_8NPwA5QOqfA47tTOTJMx6YSu-wDxPQ">Thread löschen</a></span> <span class="menuitem postmenuitem-merge"><a rel="nofollow" href="https://www.mikrocontroller.net/topic/merge?source=464834&amp;token=8uPAcM97yQIwuzU4fQihmQitAIwjKX6YvubMb1xVjtfkmyZ1Lkq0ezm_8NPwA5QOqfA47tTOTJMx6YSu-wDxPQ">Thread mit anderem zusammenführen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5660356" data-is-root="true" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1547336834000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5693605" class="post   post-userid- post-id-5693605" data-attributionline="Mike schrieb im Beitrag #5693605:" data-created-at="1547336834000" data-updated-at="1547336834000" data-user-id="" data-guest-name="Mike">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #d9822b" aria-hidden="true">M</span>
+
+      <span class="post-author">Mike</span>
+
+    
+
+      <span class="post-credential">Guest</span>
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-13T00:47:14+01:00" data-moz-translations-id="0">13.01.2019 00:47</time></span>
+    <a class="post-anchor" href="#5693605" aria-label="Link to this post">#5693605</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5693605&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5693605&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre>I would also be very interested in the subject!
+
+I have a weather station like this recently. The station provides one 
+Forecast for the current and the next 3 days. It will 
+Temperature minimum and maximum as well as clouds and precipitation 
+Displayed.
+
+After inserting the battery, the time is displayed quite quickly, which 
+Weather information takes much longer (up to 6 hours). That's the clock 
+opposite a radio clock by approx. 40 seconds, the time will 
+Probably also set via the pager service and not via DCF77.
+
+I therefore assume that the weather data in binary form of time to 
+Time is sent over the pager frequency, but the time is clear 
+More often.
+
+Have you run the scanner for a long time?</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5693605#postform" onclick="return !forumInsertQuoting(5693605)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5693605#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5693605?token=Z7rW8LieevpypV7b4w2MpmdTz4J3mOSulRr8WkEDjq1xwjD1Wa8Hg3uhmzBuBrkxxg734IB_1qUaFbSb5lbxRw">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5693605" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1547339246000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5693619" class="post   post-userid-31917 post-id-5693619" data-attributionline="Michael M. schrieb im Beitrag #5693619:" data-created-at="1547339246000" data-updated-at="1547339246000" data-user-id="31917" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">MM</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/do7tla">Michael M.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/do7tla">(do7tla)</a>
+
+    <span class="post-badge" title="Thread Creator">OP</span>
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-13T01:27:26+01:00" data-moz-translations-id="0">13.01.2019 01:27</time></span>
+    <a class="post-anchor" href="#5693619" aria-label="Link to this post">#5693619</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5693619&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5693619&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre>I logged the pager frequencies for a long time.
+The 465,970MHz is as not suspected.
+I think it's the 466,230MHz. (formerly Scall)
+Only encrypted data is transmitted there.
+Stranger ways are by far the date and time indications in plain text 
+Transfer.
+The 466,075MHz also leaves there a lot in plain text 
+will and has nothing to do with weather.
+The 466,075 was used for the Motorola Skyper pager.
+
+On several pages, the transmissions are encrypted 
+are.
+Does anyone with what the data is encrypted? (AES or Xor or even 
+As with the BOS IDEA)
+
+Whether there are test points where you can go on the board as in the DCF77 version 
+can tap the decrypted data?
+
+I have not yet been able to find any board pictures on the net.
+Only massive shops that offer these weather stations will be found.
+
+There is already some information about the read telegrams of the 
+Outside sensor.
+These can be easily logged with Windows or Linux.
+
+
+Would be interesting to know if someone else is already on it and 
+has already progressed?</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5693619#postform" onclick="return !forumInsertQuoting(5693619)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5693619#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5693619?token=BKGFSPmZVbW_ynwyzkCbR9AeB7-PS-jhbIjm8Um4O7YS2WNNGKgozLbOudlDS67QcUM_3Xis2urjh64w7u1EXA">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5693619" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1547340039000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5693622" class="post   post-userid-73105 post-id-5693622" data-attributionline="Achim B. schrieb im Beitrag #5693622:" data-created-at="1547340039000" data-updated-at="1547340039000" data-user-id="73105" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #d9822b" aria-hidden="true">AB</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/bobdylan">Achim B.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/bobdylan">(bobdylan)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-13T01:40:39+01:00" data-moz-translations-id="0">13.01.2019 01:40</time></span>
+    <a class="post-anchor" href="#5693622" aria-label="Link to this post">#5693622</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5693622&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5693622&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre>Yes, it is already a cross with these weather stations. You can 
+set what you want, the weather still comes exactly as it does 
+is.</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5693622#postform" onclick="return !forumInsertQuoting(5693622)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5693622#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5693622?token=DYC2tY4n5cXhScf82g-xrGgq-3tFsLGbcCMTeCQXGDYb-FCwbxaYvOhNAhdXBIQ7yXfDGbJXg5D_LFu5g0Jn3A">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5693622" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1547348641000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5693670" class="post   post-userid-35304 post-id-5693670" data-attributionline="Harald W. schrieb im Beitrag #5693670:" data-created-at="1547348641000" data-updated-at="1547348641000" data-user-id="35304" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #6b6f9a" aria-hidden="true">HW</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/wilhelms">Harald W.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/wilhelms">(wilhelms)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-13T04:04:01+01:00" data-moz-translations-id="0">13.01.2019 04:04</time></span>
+    <a class="post-anchor" href="#5693670" aria-label="Link to this post">#5693670</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5693670&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5693670&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre><span class="attribution-line"><a class="link-to-post" data-post-id="5660356" href="https://www.mikrocontroller.net/topic/464834#5660356">Michael M. wrote:</a></span>
+
+<span class="quoting-level-1">&gt; Has anyone with the weather stations of WetterDirekt (WD xxxx)</span>
+<span class="quoting-level-1">&gt; busy?</span>
+
+I have had such a station for several years and I am whole
+content with it. Before everyone, I like that I don't extra
+must turn on a computer to create a local weather
+to get report. To use the data elsewhere, hold
+I make little sense, since I am talking about others, easier to decode-
+can use cash sources.
+
+<span class="quoting-level-1">&gt; There is already some information about the read-out telegrams of the</span>
+<span class="quoting-level-1">&gt; External sensor.</span>
+
+I recently got another DCF watch from the Fa. Mebus with
+Temp display purchased. I found it interesting that these of the
+"Weather direct" external sensor also displayed temperature.
+Apparently, different companies also use partly
+The same codial algorithms.</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5693670#postform" onclick="return !forumInsertQuoting(5693670)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5693670#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5693670?token=Mwi9dxEXv2Cyv5p2T7Frh01RJjN9QGpquxDNDLgVRnolcFty8CbCGbu7X53Cul4Q7AweUYqnWGE0H4XNH0A5kA">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5693670" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1547383286000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5694011" class="post   post-userid-31917 post-id-5694011" data-attributionline="Michael M. schrieb im Beitrag #5694011:" data-created-at="1547383286000" data-updated-at="1547383286000" data-user-id="31917" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">MM</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/do7tla">Michael M.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/do7tla">(do7tla)</a>
+
+    <span class="post-badge" title="Thread Creator">OP</span>
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-13T13:41:26+01:00" data-moz-translations-id="0">13.01.2019 13:41</time></span>
+    <a class="post-anchor" href="#5694011" aria-label="Link to this post">#5694011</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5694011&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5694011&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre>I would be interested to know if there is more weather information 
+will be displayed as what is displayed?
+
+I think I'll have a used weather station for narrow ones 
+Euro from the bay fish.
+It's not so bad when I make the junk while crafting.</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5694011#postform" onclick="return !forumInsertQuoting(5694011)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5694011#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5694011?token=F-2isWIF91gOx0QBujDv_sEtom0A9aEV4BWpkThapk8BlUS0gzSKIQfDgeo3O9ppYHCaD_cSkx5vGuFQnw_ZpQ">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5694011" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1547384549000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5694044" class="post   post-userid-35304 post-id-5694044" data-attributionline="Harald W. schrieb im Beitrag #5694044:" data-created-at="1547384549000" data-updated-at="1547384549000" data-user-id="35304" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #6b6f9a" aria-hidden="true">HW</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/wilhelms">Harald W.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/wilhelms">(wilhelms)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-13T14:02:29+01:00">13.01.2019 14:02</time></span>
+    <a class="post-anchor" href="#5694044" aria-label="Link to this post">#5694044</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5694044&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5694044&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre><span class="attribution-line"><a class="link-to-post" data-post-id="5694011" href="https://www.mikrocontroller.net/topic/464834#5694011">Michael M. wrote:</a></span>
+
+<span class="quoting-level-1">&gt; I would be interested to know if there is more weather information</span>
+<span class="quoting-level-1">&gt; are displayed as what?</span>
+
+Since it the "Wetterdirekt" devices with different equipment
+gives at different prices, becomes with the cheaper devices
+Probably only a part of the transmitted information displayed. Whether these additional-
+infos on the cheaper devices still decoded and just not
+Being displayed, I don't know. Maybe you can have two
+Price-wise different devices dissect and compare.</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5694044#postform" onclick="return !forumInsertQuoting(5694044)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5694044#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5694044?token=WBHkFyk7P9hzJYBpT4D8KGuJnYUQiTk_LXjO39xr9nNOaQISyApCoXohRYLCi8m_ytSl5-duCzSid4Yeez6JmQ">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5694044" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1547386767000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5694102" class="post   post-userid-31917 post-id-5694102" data-attributionline="Michael M. schrieb im Beitrag #5694102:" data-created-at="1547386767000" data-updated-at="1547386767000" data-user-id="31917" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">MM</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/do7tla">Michael M.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/do7tla">(do7tla)</a>
+
+    <span class="post-badge" title="Thread Creator">OP</span>
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-13T14:39:27+01:00">13.01.2019 14:39</time></span>
+    <a class="post-anchor" href="#5694102" aria-label="Link to this post">#5694102</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5694102&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5694102&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre>As it stands, no one seems to be really concerned with it 
+to have them to analyze.
+But someone has to start.
+
+At the DCF77 weather station Hack, it is already so far that it is a 
+Website where you can watch the decoding of the data live.
+The decoding seems to be completely in software.
+
+Found with a little Google:
+
+<a class="postedlink" href="https://www.dcf77logs.de/live" rel="nofollow">https://www.dcf77logs.de/live</a></pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5694102#postform" onclick="return !forumInsertQuoting(5694102)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5694102#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5694102?token=UyFX2Vo06BUO7MwgmSGJXXrGW6kpqXcTpr9t3hobSS5FWbHcuwWVbAfoCcsUKrzK25tjy95ORRgpsCUfvU42xA">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5694102" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1548173583000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5705766" class="post   post-userid-31917 post-id-5705766" data-attributionline="Michael M. schrieb im Beitrag #5705766:" data-created-at="1548173583000" data-updated-at="1548173725000" data-user-id="31917" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">MM</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/do7tla">Michael M.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/do7tla">(do7tla)</a>
+
+    <span class="post-badge" title="Thread Creator">OP</span>
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-22T17:13:03+01:00">22.01.2019 17:13</time></span>
+    <a class="post-anchor" href="#5705766" aria-label="Link to this post">#5705766</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5705766&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5705766&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre>I have now been able to have a weather station cheaply on Ebay shooting.
+This one works so far.
+It is the WD 4000.
+However, many of the ICs are bonded directly to the board and with 
+Cast a resin.
+
+However, there are many test points available where I may be 
+Can tap decrypted signal.
+
+I got another code for an <a title="Link to Wiki article" class="wiki" href="https://www.mikrocontroller.net/articles/AVR">AVR</a>.
+Let's see if I can do something with it.
+
+I have to first the <a title="Link to Wiki article" class="wiki" href="https://www.mikrocontroller.net/articles/AVR">AVR</a> flash and then the signal from the 
+466,230MHz feed in and see what comes out in the back.
+
+The actual recipient seems to be running on a PLL basis.
+Since this must receive the external sensor 868 or 433MHz and also the 
+Weather data from the 466.230MHz.
+
+I'm still setting board pictures here.</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5705766#postform" onclick="return !forumInsertQuoting(5705766)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5705766#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5705766?token=2T6JtFGgmEbGkglaz-qoRdLGhnaqPRquXSz3uHTw2yrPRm-xsJHlP8-WzLFC4Z3Sc5u-FF3aKKXSI79506WkwA">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5705766" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1548309635000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5707814" class="post   post-userid- post-id-5707814" data-attributionline="Martin schrieb im Beitrag #5707814:" data-created-at="1548309635000" data-updated-at="1548309635000" data-user-id="" data-guest-name="Martin">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #6b6f9a" aria-hidden="true">M</span>
+
+      <span class="post-author">Martin</span>
+
+    
+
+      <span class="post-credential">Guest</span>
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-24T07:00:35+01:00">24.01.2019 07:00</time></span>
+    <a class="post-anchor" href="#5707814" aria-label="Link to this post">#5707814</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5707814&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5707814&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre>Very interesting!</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5707814#postform" onclick="return !forumInsertQuoting(5707814)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5707814#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5707814?token=AlPvU2gG08ee_jcA_mDV-I26rJBfGA8lkJJwfSXCLoEUKwlWiTeuvpf68utza-BvLOeU8qj_PS4fnTi8gpdRaw">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5707814" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1548313274000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5707853" class="post   post-userid- post-id-5707853" data-attributionline="fsdf schrieb im Beitrag #5707853:" data-created-at="1548313274000" data-updated-at="1548313274000" data-user-id="" data-guest-name="fsdf">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #6b6f9a" aria-hidden="true">F</span>
+
+      <span class="post-author">fsdf</span>
+
+    
+
+      <span class="post-credential">Guest</span>
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-24T08:01:14+01:00">24.01.2019 08:01</time></span>
+    <a class="post-anchor" href="#5707853" aria-label="Link to this post">#5707853</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5707853&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5707853&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre>Actually, you should etch the epox from a chip and with 
+View a microscope.
+
+With high probability it is a <a title="Link to Wiki article" class="wiki" href="https://www.mikrocontroller.net/articles/PIC">PIC</a> /AVR/etc. with blocked 
+Fuses.
+
+They traditionally have problems with power glitching.
+
+Hope and pray that the rifles have no ROM and they only in the factory 
+be flashed.
+
+There was also a similar gimmick with the DCF77 
+Weather receivers where AFAIR were only a few bytes in the RAM.</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5707853#postform" onclick="return !forumInsertQuoting(5707853)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5707853#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5707853?token=XNehKndShDMDmdN3kZtNzt3HG7nQhMxrIQukjIzoRSFKr0cvlmP5SgqdFpwckHhZfJoj2ydj_mCuBOxNK706yw">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5707853" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1548501831000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5710849" class="post   post-userid-31917 post-id-5710849" data-attributionline="Michael M. schrieb im Beitrag #5710849:" data-created-at="1548501831000" data-updated-at="1548502611000" data-user-id="31917" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">MM</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/do7tla">Michael M.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/do7tla">(do7tla)</a>
+
+    <span class="post-badge" title="Thread Creator">OP</span>
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-26T12:23:51+01:00" data-moz-translations-id="0">26.01.2019 12:23</time></span>
+    <a class="post-anchor" href="#5710849" aria-label="Link to this post">#5710849</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5710849&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5710849&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre>I've put some pictures of the two boards on.
+
+The receiver is housed on its own board.
+There is still a 16MHz on the back of the receiver board 
+Quartz.
+
+Below right the contact rows of the motherboard seem to be for the 
+Programming to be.</pre>
+  </div>
+
+      <div class="attachments">
+      Attached files:<br>
+
+
+        <ul class="attachments-images">
+          <li>
+            <a class="highslide" onclick="return hs.expand(this,{src:'/attachment/390017/20190106_112557.jpg'})" href="https://www.mikrocontroller.net/attachment/390017/20190106_112557.jpg" style="border: none;"><img src="WeatherDirect%20weather%20station%20crafts%20-%20Mikrocontroller.net_fichiers/390017.jpg" alt="20190106_112557.jpg" width="120" height="90" loading="lazy"></a>
+            <a href="https://www.mikrocontroller.net/attachment/390017/20190106_112557.jpg">20190106_112557.jpg</a>
+            (320 KB)
+          </li>
+          <li>
+            <a class="highslide" onclick="return hs.expand(this,{src:'/attachment/390018/20190106_112448.jpg'})" href="https://www.mikrocontroller.net/attachment/390018/20190106_112448.jpg" style="border: none;"><img src="WeatherDirect%20weather%20station%20crafts%20-%20Mikrocontroller.net_fichiers/390018.jpg" alt="20190106_112448.jpg" width="120" height="90" loading="lazy"></a>
+            <a href="https://www.mikrocontroller.net/attachment/390018/20190106_112448.jpg">20190106_112448.jpg</a>
+            (370 KB)
+          </li>
+          <li>
+            <a class="highslide" onclick="return hs.expand(this,{src:'/attachment/390019/20190106_112643.jpg'})" href="https://www.mikrocontroller.net/attachment/390019/20190106_112643.jpg" style="border: none;"><img src="WeatherDirect%20weather%20station%20crafts%20-%20Mikrocontroller.net_fichiers/390019.jpg" alt="20190106_112643.jpg" width="120" height="90" loading="lazy"></a>
+            <a href="https://www.mikrocontroller.net/attachment/390019/20190106_112643.jpg">20190106_112643.jpg</a>
+            (320 KB)
+          </li>
+        </ul>
+    </div>
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5710849#postform" onclick="return !forumInsertQuoting(5710849)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5710849#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5710849?token=8npvunlPpHiuuBgX-ArOyyOc317CqYVKRPUZxZExYOXkAom_mH7ZAae83fx1AftcgsHnPDVOt0HL-lEENmQfDw">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5710849" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1548845756000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5716047" class="post   post-userid- post-id-5716047" data-attributionline="SchönwetterProggger schrieb im Beitrag #5716047:" data-created-at="1548845756000" data-updated-at="1548845756000" data-user-id="" data-guest-name="SchönwetterProggger">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #6b6f9a" aria-hidden="true">S</span>
+
+      <span class="post-author">Fine weatherProgger</span>
+
+    
+
+      <span class="post-credential">Guest</span>
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-30T11:55:56+01:00" data-moz-translations-id="0">30.01.2019 11:55</time></span>
+    <a class="post-anchor" href="#5716047" aria-label="Link to this post">#5716047</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5716047&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5716047&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre><span class="attribution-line"><a class="link-to-post" data-post-id="5710849" href="https://www.mikrocontroller.net/topic/464834#5710849">Michael M. wrote:</a></span>
+<span class="quoting-level-1">&gt; The receiver is placed on a separate board.</span>
+<span class="quoting-level-1">&gt; There is still a 16MHz on the back of the receiver board</span>
+<span class="quoting-level-1">&gt; Quartz.</span>
+
+And,
+How do the two ICs talk?
+
+<span class="quoting-level-1">&gt; Below right the contact rows of the motherboard shine for the</span>
+<span class="quoting-level-1">&gt; to be programming.</span>
+
+Yeah, looks something the old <a title="Link to Wiki article" class="wiki" href="https://www.mikrocontroller.net/articles/JTAG">day</a>.</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5716047#postform" onclick="return !forumInsertQuoting(5716047)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5716047#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5716047?token=v1BQ5q_BPhazeFD6_sHzLjpAbxrDlg5Cvz4sS823oX-pKLbjTvBDb7p8lRFzysa5mx1XeDRxPEkwMWSKauLelQ">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5716047" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1548853680000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5716272" class="post   post-userid-34317 post-id-5716272" data-attributionline="Rico W. schrieb im Beitrag #5716272:" data-created-at="1548853680000" data-updated-at="1548854136000" data-user-id="34317" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">RW</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/bitkipper">Rico W.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/bitkipper">(bit tipper)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-30T14:08:00+01:00" data-moz-translations-id="0">30.01.2019 14:08</time></span>
+    <a class="post-anchor" href="#5716272" aria-label="Link to this post">#5716272</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5716272&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5716272&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre><span class="attribution-line"><a class="link-to-post" data-post-id="5716047" href="https://www.mikrocontroller.net/topic/464834#5716047">SchönwetterProgger wrote:</a></span>
+<span class="attribution-line">Michael <a class="link-to-post" data-post-id="5710849" href="https://www.mikrocontroller.net/topic/464834#5710849">M. wrote:</a></span>
+<span class="quoting-level-2">&gt;&gt; Below right the contact rows of the motherboard seem to be for the</span>
+<span class="quoting-level-2">&gt;&gt; To be programming.</span>
+<span class="quoting-level-1">&gt;</span>
+<span class="quoting-level-1">&gt; Yes, looks something the old <a title="Link to Wiki article" class="wiki" href="https://www.mikrocontroller.net/articles/JTAG">JTAG</a>..</span>
+But has only 5 or 6 lines to the chip, because it looks one-sided. There 
+I'd tap a <a title="Link to Wiki article" class="wiki" href="https://www.mikrocontroller.net/articles/PIC">PIC</a> with ICSP.
+Second image on the left in the middle of the board could be a footprint of 
+be uninstalled EEPROM, from which the program parts are at higher 
+Features of the station are reloaded.</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5716272#postform" onclick="return !forumInsertQuoting(5716272)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5716272#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5716272?token=jIZedmo-6gwY0N7Ileg--J5GLtgCNoHc1bqETRWYIPKa_rhziw-XdRHUGyMY4wtvPxsWuvXRs9datcyMss1fGA">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5716272" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1548854405000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5716295" class="post   post-userid-34317 post-id-5716295" data-attributionline="Rico W. schrieb im Beitrag #5716295:" data-created-at="1548854405000" data-updated-at="1548856053000" data-user-id="34317" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">RW</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/bitkipper">Rico W.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/bitkipper">(bit tipper)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-30T14:20:05+01:00" data-moz-translations-id="0">30.01.2019 14:20</time></span>
+    <a class="post-anchor" href="#5716295" aria-label="Link to this post">#5716295</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5716295&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5716295&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre>At the sight of the footprint of the receiver board, I would not 
+suspect that the chip is directly bonded, rather soldered up normally 
+(TQFP-28?) and slimmed. Then that could also be the case with the main chip.</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5716295#postform" onclick="return !forumInsertQuoting(5716295)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5716295#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5716295?token=YJdytsq5voNKOjpJ7OEUE27RyhZsaYA4Jqadi_LGJXd275SzK4jD-kM-_6Jh6iGEz4zydJuOsjOpqdVKVZNanQ">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5716295" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1548869377000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5716668" class="post   post-userid-31917 post-id-5716668" data-attributionline="Michael M. schrieb im Beitrag #5716668:" data-created-at="1548869377000" data-updated-at="1548869377000" data-user-id="31917" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">MM</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/do7tla">Michael M.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/do7tla">(do7tla)</a>
+
+    <span class="post-badge" title="Thread Creator">OP</span>
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-30T18:29:37+01:00" data-moz-translations-id="0">30.01.2019 18:29</time></span>
+    <a class="post-anchor" href="#5716668" aria-label="Link to this post">#5716668</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5716668&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5716668&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre>Yes on the receiver board they have the chip with the mass so 
+glods up that you can't read his designation.
+However, if you record the circuit, you should quickly 
+find out which chip this is.</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5716668#postform" onclick="return !forumInsertQuoting(5716668)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5716668#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5716668?token=_mHdh4-QFTla2eD19ZUSp_kO7meXcD2OOsuBU9gtFxzoGTuCbqFoQFPdJR54nicwWFPWBWCXD4W1xMmSf3ho9g">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5716668" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1548887730000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5717027" class="post   post-userid-34317 post-id-5717027" data-attributionline="Rico W. schrieb im Beitrag #5717027:" data-created-at="1548887730000" data-updated-at="1548888007000" data-user-id="34317" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">RW</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/bitkipper">Rico W.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/bitkipper">(bit tipper)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-30T23:35:30+01:00" data-moz-translations-id="0">30.01.2019 23:35</time></span>
+    <a class="post-anchor" href="#5717027" aria-label="Link to this post">#5717027</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5717027&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5717027&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre><span class="attribution-line"><a class="link-to-post" data-post-id="5716668" href="https://www.mikrocontroller.net/topic/464834#5716668">Michael M. wrote:</a></span>
+<span class="quoting-level-1">&gt; However, if you record the circuit, you should quickly</span>
+<span class="quoting-level-1">&gt; getting out which chip this is about.</span>
+You can probably save yourself. I'm after some search on the 
+AX50424 by AXSEM.
+<a class="postedlink" href="https://www.cdiweb.com/datasheets/axsem/ax50424_ds_v1_3.pdf" rel="nofollow">https://www.cdiweb.com/datasheets/axsem/ax50424_ds_v1_3.pdf</a>
+Now belongs to ON Semi, which only a number of transceivers of this 
+Type offer, no more pure receivers. Because the same is the 
+AX5243 as TRX. Apparently, the package was later reduced from 28 to 
+20 pins if you leave out the NC and TST1..3 pins. The data sheet is 
+from 2008, so comes well in time with the technology of the weather station.
+The application circuit on page 32 in the data sheet is correct 
+few little things quite exactly with yours agrees on what antenna, quartz, 
+SPI and power supply concern. Some NC pins are with you 
+However, as test points.
+When sniffing at the SPI, you may be able to set the exact frequency, 
+Get bandwidth, filters, etc. out. And of course encrypted 
+Data Packets :)
+
+73!</pre>
+  </div>
+
+      <div class="attachments">
+      Attached files:<br>
+
+      <ul class="attachments-files">
+        <li>
+          <a href="https://www.mikrocontroller.net/attachment/390653/ax50424_ds_v1_3.pdf">ax50424_ds_v1_3.pdf</a> (1.32 MB)
+        </li>
+        </ul>
+
+    </div>
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5717027#postform" onclick="return !forumInsertQuoting(5717027)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5717027#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5717027?token=sezHenfScVN1LWuwo3V7tyGVk96kPMP8WOIq6eiyszSnlCF_luMMKnwprlsufk4ggMirvFPb8ffX7WIoT-fM3g">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5717027" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1548888651000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="5717035" class="post   post-userid-34317 post-id-5717035" data-attributionline="Rico W. schrieb im Beitrag #5717035:" data-created-at="1548888651000" data-updated-at="1548888651000" data-user-id="34317" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">RW</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/bitkipper">Rico W.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/bitkipper">(bit tipper)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2019-01-30T23:50:51+01:00" data-moz-translations-id="0">30.01.2019 23:50</time></span>
+    <a class="post-anchor" href="#5717035" aria-label="Link to this post">#5717035</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5717035&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=5717035&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <pre><span class="attribution-line"><a class="link-to-post" data-post-id="5705766" href="https://www.mikrocontroller.net/topic/464834#5705766">Michael M. wrote:</a></span>
+<span class="quoting-level-1">&gt; I got another code for an <a title="Link to Wiki article" class="wiki" href="https://www.mikrocontroller.net/articles/AVR">AVR</a>.</span>
+<span class="quoting-level-1">&gt; Let’s see if I can do something with it.</span>
+Is there a decoder in there? Then cheerfully approach the recipient SPI. But 
+Only when you have carved the settings :)
+If all this works out, it would be possible with RFM01 &amp; Co., Arduino, etc.</pre>
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=5717035#postform" onclick="return !forumInsertQuoting(5717035)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=5717035#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/5717035?token=R4YT7wHDYj258mqigarA5Ov9P2LO6fdPB-YXr2pC_p5R_vXq4PIfRLD2r0kMofVzSqAHADkOxUSI6V9uzReBdA">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="5717035" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1697788962000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7519309" class="post   post-userid-1512 post-id-7519309" data-attributionline="David G. schrieb im Beitrag #7519309:" data-created-at="1697788962000" data-updated-at="1697788962000" data-user-id="1512" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">DG</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/pronet">David G.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/pronet">(pronet)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-20T10:02:42+02:00" data-moz-translations-id="0">20.10.2023 10:02</time></span>
+    <a class="post-anchor" href="#7519309" aria-label="Link to this post">#7519309</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7519309&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7519309&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>Hi,</p>
+<p>I know it's been 4 years...
+But are you still tinkering with the weather station?</p>
+<p>Greetings ProNet</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7519309#postform" onclick="return !forumInsertQuoting(7519309)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7519309#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7519309?token=81BDiQvOMuzEp6tDn3YePtyTD7l9O24YQkse588U4LnlKKWM6v9Plc2jbqgSfSupfc4324rcXBPNRFYmaEGfUw">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7519309" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1697797461000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7519431" class="post   post-userid-1205 post-id-7519431" data-attributionline="Christoph db1uq K. schrieb im Beitrag #7519431:" data-created-at="1697797461000" data-updated-at="1697797461000" data-user-id="1205" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #d9822b" aria-hidden="true">CD</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/christoph_kessler">Christoph db1uq K.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/christoph_kessler">(christoph_kessler)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-20T12:24:21+02:00" data-moz-translations-id="0">20.10.2023 12:24</time></span>
+    <a class="post-anchor" href="#7519431" aria-label="Link to this post">#7519431</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7519431&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7519431&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>There was once a thread (from 2009 to 2012) to the competitor product via DCF77
+<a class="link-to-post" data-post-id="1686814" href="https://www.mikrocontroller.net/topic/158446#1686814">Post “Re: What happened to the thread of MeteoData?”</a></p>
+<p>The current devices of the provider WetterDirect:
+<a href="http://www.wetterdirekt.com/index.php?key=produkte&amp;subkey=counties" class="postedlink" rel="nofollow">http://www.wetterdirekt.com/index.php? key=products&amp;subkey=counties</a>
+I have an older 5-day model.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7519431#postform" onclick="return !forumInsertQuoting(7519431)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7519431#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7519431?token=Nlikp6fCTMaPxUXIodwsgPQWVnNx6a4-x75gdoqmj1ogIEKiRvMxv4bBgCMs1xkXVUtuEYYOnDVIsSi3LfPwsA">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7519431" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1697875722000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7519937" class="post   post-userid-31917 post-id-7519937" data-attributionline="Michael M. schrieb im Beitrag #7519937:" data-created-at="1697875722000" data-updated-at="1697875722000" data-user-id="31917" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">MM</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/do7tla">Michael M.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/do7tla">(do7tla)</a>
+
+    <span class="post-badge" title="Thread Creator">OP</span>
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-21T10:08:42+02:00" data-moz-translations-id="0">21.10.2023 10:08</time></span>
+    <a class="post-anchor" href="#7519937" aria-label="Link to this post">#7519937</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7519937&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7519937&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>I haven't been there for a long time.
+Professionally, I have less time for this.</p>
+<p>Are there generally new findings on which frequency the weather information is received?</p>
+<p>I still suspect the 466,230MHz and 512 BPS.
+And then it would still be clear whether alphanumeric or numerics will be used?
+This cannot be seen because of the encryption.
+It would also be interesting if you knew the RIC of the weather station.
+Then you could carry out further attempts.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7519937#postform" onclick="return !forumInsertQuoting(7519937)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7519937#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7519937?token=NHbrO_Rw7HaHWl2abkOiCY0s1pATONE3A8hXHEPcgPkiDg0-FUGRD45emHHjSJeeLHHu8uTf4zyMxx_d5In_Ew">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7519937" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1697992203000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7520791" class="post   post-userid-90808 post-id-7520791" data-attributionline="Dieter S. schrieb im Beitrag #7520791:" data-created-at="1697992203000" data-updated-at="1697992203000" data-user-id="90808" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #9a5a7d" aria-hidden="true">DS</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/ds1">Dieter S.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/ds1">(ds1)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-22T18:30:03+02:00" data-moz-translations-id="0">22.10.2023 18:30</time></span>
+    <a class="post-anchor" href="#7520791" aria-label="Link to this post">#7520791</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7520791&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7520791&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>Here is a bit to the inner workings of the WD 4000:</p>
+<p><a href="https://www.all-electronics.de/wp-content/uploads/migrated/article-pdf/80423/ei08-06-080.pdf" class="postedlink" rel="nofollow" data-moz-translations-id="0">https://www.all-electronics.de/wp-content/uploads/migrated/article-pdf/80423/ei08-06-080.pdf</a></p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7520791#postform" onclick="return !forumInsertQuoting(7520791)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7520791#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7520791?token=ifKjNRAKdbKauXeBf50DWRrZZYwrPyV8gyQNb6UDy6mfikUw8TsIy5O9smryljbOu4Rd7tzYF3cMK0WuAla0Qw">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7520791" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1697995098000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7520832" class="post   post-userid-31917 post-id-7520832" data-attributionline="Michael M. schrieb im Beitrag #7520832:" data-created-at="1697995098000" data-updated-at="1697995098000" data-user-id="31917" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">MM</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/do7tla">Michael M.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/do7tla">(do7tla)</a>
+
+    <span class="post-badge" title="Thread Creator">OP</span>
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-22T19:18:18+02:00" data-moz-translations-id="0">22.10.2023 19:18</time></span>
+    <a class="post-anchor" href="#7520832" aria-label="Link to this post">#7520832</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7520832&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7520832&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>Oh, I was right with my guess!
+466,230MHz.
+So 1200bit/s and not 512bit/s as first assumed.</p>
+<p>Then it will be easy to determine the RICs.
+Since everything sends encrypted anyway, you can record the RICs and analyze which ones are sent the most.
+They will certainly be the same at all weather stations?</p>
+<p>With what is encrypted, unfortunately, is not in the article.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7520832#postform" onclick="return !forumInsertQuoting(7520832)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7520832#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7520832?token=bRIPt1c7Is2CvuoWjF510DQy5Ex5SxrYeO0wtgHLhkl7aumytgpftIu6L_0BVUBHlW_cLo6sKNP34nh3pp75ow">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7520832" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1698066156000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7521268" class="post   post-userid-90808 post-id-7521268" data-attributionline="Dieter S. schrieb im Beitrag #7521268:" data-created-at="1698066156000" data-updated-at="1698066178000" data-user-id="90808" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #9a5a7d" aria-hidden="true">DS</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/ds1">Dieter S.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/ds1">(ds1)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-23T15:02:36+02:00" data-moz-translations-id="0">23.10.2023 15:02</time></span>
+    <a class="post-anchor" href="#7521268" aria-label="Link to this post">#7521268</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7521268&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7521268&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>A short test with POC32 on 466.230 MHz provides the time at the address 0002504 (at 1200 baud):</p>
+<div class="code notranslate highlight"><table class="rouge-line-table"><tbody>
+<tr id="line-1" class="lineno">
+<td class="rouge-gutter gl" style="-moz-user-select: none;-ms-user-select: none;-webkit-user-select: none;user-select: none;"><pre>1</pre></td>
+<td class="rouge-code"><pre><code>23.10.2023 14:16:19  1200 Baud   0002504    141529   231023
+</code></pre></td>
+</tr>
+<tr id="line-2" class="lineno">
+<td class="rouge-gutter gl" style="-moz-user-select: none;-ms-user-select: none;-webkit-user-select: none;user-select: none;"><pre>2</pre></td>
+<td class="rouge-code"><pre><code>23.10.2023 14:19:07  1200 Baud   0002504    141929   231023
+</code></pre></td>
+</tr>
+<tr id="line-3" class="lineno">
+<td class="rouge-gutter gl" style="-moz-user-select: none;-ms-user-select: none;-webkit-user-select: none;user-select: none;"><pre>3</pre></td>
+<td class="rouge-code"><pre><code>23.10.2023 14:19:15  1200 Baud   0002504    141929   231023
+</code></pre></td>
+</tr>
+</tbody></table></div>
+<p>It may be that the PC watch is not exactly right, besides, it could 
+be that messages are missing due to not ideal reception conditions.</p>
+<p>In addition to the time, there is still some other with 1200 baud, but without readable content (presumably encrypted).</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7521268#postform" onclick="return !forumInsertQuoting(7521268)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7521268#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7521268?token=RVsR3gemdtA1QHg3FGdodcgzjr5aB3ReXTun3eLQBzNTI_fb5pcLqTxEvdyZbF3iaW623K3gRlXSNO8cRYV42Q">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7521268" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1698076739000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7521378" class="post   post-userid-31917 post-id-7521378" data-attributionline="Michael M. schrieb im Beitrag #7521378:" data-created-at="1698076739000" data-updated-at="1698076739000" data-user-id="31917" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">MM</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/do7tla">Michael M.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/do7tla">(do7tla)</a>
+
+    <span class="post-badge" title="Thread Creator">OP</span>
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-23T17:58:59+02:00" data-moz-translations-id="0">23.10.2023 17:58</time></span>
+    <a class="post-anchor" href="#7521378" aria-label="Link to this post">#7521378</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7521378&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7521378&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>One would now have to look at whether something encrypted is sent at the address 0002504 in addition to the time and date?</p>
+<p>If you re-insert the batteries, the correct time and date will be displayed after a short time.</p>
+<p>I could just log one address with an SDR stick.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7521378#postform" onclick="return !forumInsertQuoting(7521378)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7521378#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7521378?token=dM9pqB_0OXdvqp__a0U0ddm1Sz1ip5qkJase45t_LfJit4-t_sVEDmauWhTmTgHieOhzX5VAqK-qpFYiPCpSGA">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7521378" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1698078217000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7521386" class="post   post-userid-90808 post-id-7521386" data-attributionline="Dieter S. schrieb im Beitrag #7521386:" data-created-at="1698078217000" data-updated-at="1698078217000" data-user-id="90808" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #9a5a7d" aria-hidden="true">DS</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/ds1">Dieter S.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/ds1">(ds1)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-23T18:23:37+02:00" data-moz-translations-id="0">23.10.2023 18:23</time></span>
+    <a class="post-anchor" href="#7521386" aria-label="Link to this post">#7521386</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7521386&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7521386&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p class="attribution-line"><a class="link-to-post" data-post-id="7521378" href="https://www.mikrocontroller.net/topic/goto_post/7521378">Michael M. wrote:</a></p>
+<blockquote>
+<p>One would now have to look at whether at the address 0002504 next to time and
+Date also what encryption is sent?</p>
+</blockquote>
+<p>It's just the time. In the network you will also find a note for the 
+time at 0002504. Although this does not mean that the weather station 
+gets its time from this message, the time could also come together with 
+the (presumably encrypted) weather data.</p>
+<p>What is still frequently added as an address is 0003304, 0003320 and 
+0013144 (each without readable content). However, the message length of 
+0003304 is probably too short for the weather data with 8 bytes.</p>
+<p>The whole thing with reservation of only a few minutes observation.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7521386#postform" onclick="return !forumInsertQuoting(7521386)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7521386#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7521386?token=Tgb0Y6TqHqCX79iNsr3sOJ5ZRW-VvAb517qlc7sbkB5YfhJmRdtj2Z7rHWY_ttmvPwR9DWJbNPJYte2yHE7v9A">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7521386" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1698083252000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7521429" class="post   post-userid-31917 post-id-7521429" data-attributionline="Michael M. schrieb im Beitrag #7521429:" data-created-at="1698083252000" data-updated-at="1698083252000" data-user-id="31917" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">MM</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/do7tla">Michael M.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/do7tla">(do7tla)</a>
+
+    <span class="post-badge" title="Thread Creator">OP</span>
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-23T19:47:32+02:00" data-moz-translations-id="0">23.10.2023 19:47</time></span>
+    <a class="post-anchor" href="#7521429" aria-label="Link to this post">#7521429</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7521429&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7521429&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>My idea would be to put log and the batteries into the station and see when the time will get it.</p>
+<p>Then you can see whether an encrypted data packet was sent at that time or in plain text.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7521429#postform" onclick="return !forumInsertQuoting(7521429)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7521429#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7521429?token=oW96otaDZr7cD78RQv1OyKIJ5vdZnxf1OtO_xMFbZ3a3F5ynN7Ibx9ULevrP9ntfA1Tela54Jf613PcFZg4YnA">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7521429" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1698145209000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7521852" class="post   post-userid-90808 post-id-7521852" data-attributionline="Dieter S. schrieb im Beitrag #7521852:" data-created-at="1698145209000" data-updated-at="1698145209000" data-user-id="90808" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #9a5a7d" aria-hidden="true">DS</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/ds1">Dieter S.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/ds1">(ds1)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-24T13:00:09+02:00" data-moz-translations-id="0">24.10.2023 13:00</time></span>
+    <a class="post-anchor" href="#7521852" aria-label="Link to this post">#7521852</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7521852&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7521852&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>Addendum to further above: the address 0003304 is also a 
+time/date, POC32 has mistakenly interpreted it as "Alphanumeric", 
+"Numerical" is correct. This time is exactly seconds and does not have 
+the constant value "29" for the second as at address 0002504.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7521852#postform" onclick="return !forumInsertQuoting(7521852)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7521852#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7521852?token=2j7FJlHoZcYROeP6qOFoDpQYUmtLNt_bCo6-1gsiBBnMRiMjsNkYvxg9JhEl6l2ZNUVqCbzR7dCFgfYXrHd78w">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7521852" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1698577331000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7525080" class="post   post-userid-90808 post-id-7525080" data-attributionline="Dieter S. schrieb im Beitrag #7525080:" data-created-at="1698577331000" data-updated-at="1698577331000" data-user-id="90808" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #9a5a7d" aria-hidden="true">DS</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/ds1">Dieter S.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/ds1">(ds1)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-29T12:02:11+01:00" data-moz-translations-id="0">29.10.2023 12:02</time></span>
+    <a class="post-anchor" href="#7525080" aria-label="Link to this post">#7525080</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7525080&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7525080&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>The time/date gets the weather station of address 0002504 (this
+ is the time with the constant value "29" for the second). You can check
+ this by sending your own time message, then the station will display 
+the time of this message.</p>
+<p>Where the weather data comes from is not yet quite clear, my device 
+(WD 4005) gets the weather data every three hours, so I have to cut even
+ more often.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7525080#postform" onclick="return !forumInsertQuoting(7525080)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7525080#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7525080?token=yM-y5AUh4eZBkaOodCab4JQbJuFqXPtDFQ--Q0qr-a3et1Th5BCcn0iVZkP5La53NUYeg527yUiaAPaC7f6GRw">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7525080" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1698597826000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7525319" class="post   post-userid-31917 post-id-7525319" data-attributionline="Michael M. schrieb im Beitrag #7525319:" data-created-at="1698597826000" data-updated-at="1698597826000" data-user-id="31917" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">MM</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/do7tla">Michael M.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/do7tla">(do7tla)</a>
+
+    <span class="post-badge" title="Thread Creator">OP</span>
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-29T17:43:46+01:00" data-moz-translations-id="0">29.10.2023 17:43</time></span>
+    <a class="post-anchor" href="#7525319" aria-label="Link to this post">#7525319</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7525319&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7525319&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>That's right, why didn't I come up with it?
+I have another Hack RF with Porta Pack lying around.
+I'm going to do some tests with that.
+Above all, you can record the encrypted messages and have them sent out again.
+Then you can see on the display which symbols and temperature indications change.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7525319#postform" onclick="return !forumInsertQuoting(7525319)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7525319#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7525319?token=TxhEp2bbgrxbk2UKIMo4N0uFQbhzmFbtMXzsC3SIhBNZYKKih-r_xVKXoOGtwQ2g6th52oR_ZOa-c6TK0937-Q">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7525319" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1698672927000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7525821" class="post   post-userid-90808 post-id-7525821" data-attributionline="Dieter S. schrieb im Beitrag #7525821:" data-created-at="1698672927000" data-updated-at="1698672949000" data-user-id="90808" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #9a5a7d" aria-hidden="true">DS</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/ds1">Dieter S.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/ds1">(ds1)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-30T14:35:27+01:00" data-moz-translations-id="0">30.10.2023 14:35</time></span>
+    <a class="post-anchor" href="#7525821" aria-label="Link to this post">#7525821</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7525821&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7525821&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>The SPI communication with the RF receiver shows quite well 
+what the weather station does after switching on. The device is a WD 
+4005, the receiver seems to be from AXSEM (see above) if it is an 
+AX50424 I can not say but at least the registers for setting the 
+frequency fit.</p>
+<p>After inserting the batteries, the frequency of the outside 
+temperature sensor is determined first, apparently there are three 
+possible frequencies.</p>
+<p>If the outside temperature sensor has been received or after a 
+timeout, the frequency for the weather data is determined. For this 
+purpose, the following frequencies are received:</p>
+<div class="code notranslate highlight"><table class="rouge-line-table"><tbody>
+<tr id="line-1" class="lineno">
+<td class="rouge-gutter gl" style="-moz-user-select: none;-ms-user-select: none;-webkit-user-select: none;user-select: none;"><pre>1</pre></td>
+<td class="rouge-code"><pre><code>466,230 MHz
+</code></pre></td>
+</tr>
+<tr id="line-2" class="lineno">
+<td class="rouge-gutter gl" style="-moz-user-select: none;-ms-user-select: none;-webkit-user-select: none;user-select: none;"><pre>2</pre></td>
+<td class="rouge-code"><pre><code>466,075 MHz
+</code></pre></td>
+</tr>
+<tr id="line-3" class="lineno">
+<td class="rouge-gutter gl" style="-moz-user-select: none;-ms-user-select: none;-webkit-user-select: none;user-select: none;"><pre>3</pre></td>
+<td class="rouge-code"><pre><code>465,970 MHz
+</code></pre></td>
+</tr>
+</tbody></table></div>
+<p>Each frequency is in the range of approx. +/- 8 kHz with approx. 250 
+Hz steps go through. The whole thing is repeated a few times. This will 
+probably compensate for tolerances of the quartz.</p>
+<p>If the correct frequency has been detected (I do not yet know what 
+the criterion is for it) only this frequency is received alternately 
+with the outside temperature sensor.</p>
+<p>Here (Region 81) the frequency for the weather data is 466,230 MHz.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7525821#postform" onclick="return !forumInsertQuoting(7525821)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7525821#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7525821?token=pGDKFUHnJdCCVWa0rMyf4VyZHjM_rZN2rzfU6CjQKi2yGCwQoNZYqYtRo18hx6p2_cQmUchKoX0gOJwpj4VVxw">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7525821" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1698681415000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7525938" class="post   post-userid-34317 post-id-7525938" data-attributionline="Rico W. schrieb im Beitrag #7525938:" data-created-at="1698681415000" data-updated-at="1698681415000" data-user-id="34317" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">RW</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/bitkipper">Rico W.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/bitkipper">(bit tipper)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-30T16:56:55+01:00" data-moz-translations-id="0">30.10.2023 16:56</time></span>
+    <a class="post-anchor" href="#7525938" aria-label="Link to this post">#7525938</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7525938&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7525938&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p class="attribution-line"><a class="link-to-post" data-post-id="7525821" href="https://www.mikrocontroller.net/topic/goto_post/7525821">Dieter S. wrote:</a></p>
+<blockquote>
+<p>the receiver appears to be from AXSEM (see above) whether it is a
+AX50424 is not I can say but at least the register to
+Adjust the frequency fit.</p>
+</blockquote>
+<p>Hehe, I'm glad I did a real research at the time. Thank you for your 
+effort!
+Of course, they have received a 'customized' version from the 
+manufacturer, where individual registers are dead or others are 
+activated.</p>
+<blockquote>
+<p>After inserting the batteries, the frequency of the
+Outside temperature Sensors determines, apparently there are three possible
+frequencies.</p>
+</blockquote>
+<p>Sounds like the usual external units with the three-section switch and temperature + air pressure sensor.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7525938#postform" onclick="return !forumInsertQuoting(7525938)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7525938#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7525938?token=eVnCMZnmhDlkysBR2p_1Qac7Wf9x41lHRu9vz4tkDt1vISQ0eNf5QG3OBbpXlMDWBmZhnYYEa0zJ4CcOLDFxNw">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7525938" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1698693429000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7526079" class="post   post-userid-90808 post-id-7526079" data-attributionline="Dieter S. schrieb im Beitrag #7526079:" data-created-at="1698693429000" data-updated-at="1698693429000" data-user-id="90808" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #9a5a7d" aria-hidden="true">DS</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/ds1">Dieter S.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/ds1">(ds1)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-10-30T20:17:09+01:00" data-moz-translations-id="0">30.10.2023 20:17</time></span>
+    <a class="post-anchor" href="#7526079" aria-label="Link to this post">#7526079</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7526079&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7526079&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p class="attribution-line"><a class="link-to-post" data-post-id="7525938" href="https://www.mikrocontroller.net/topic/goto_post/7525938">Rico W. wrote:</a></p>
+<blockquote>
+<p>Of course, it may be that there is a 'customized' version from the manufacturer
+have received where individual registers are dead or others
+are unlocked.</p>
+</blockquote>
+<p>A few registers are addressed that are not in the data sheet. 
+However, this is not decisive, the frequency setting fits and also the 
+collection of the data bits. Both the sync word for POCSAG and the sync 
+word for the outside temperature sensor can be seen in the bits. You may
+ be able to use the received POCSAG messages to see what the weather 
+station uses as a criterion for the correct frequency.</p>
+<p>Maybe I'll read the receiver's "Silicon Revision" register on occasion, maybe you can identify which chip it is exactly.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7526079#postform" onclick="return !forumInsertQuoting(7526079)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7526079#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7526079?token=gX74Roeg02qwyGv52uNxqQWQ7w6zXsRmhZWsyrEN3neXBh5DZpGuE7nMrhJX6EQ-pM3XbES59m0KmuQLFlihnQ">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7526079" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1698949454000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7527970" class="post   post-userid-90808 post-id-7527970" data-attributionline="Dieter S. schrieb im Beitrag #7527970:" data-created-at="1698949454000" data-updated-at="1698949454000" data-user-id="90808" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #9a5a7d" aria-hidden="true">DS</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/ds1">Dieter S.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/ds1">(ds1)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-11-02T19:24:14+01:00" data-moz-translations-id="0">02.11.2023 19:24</time></span>
+    <a class="post-anchor" href="#7527970" aria-label="Link to this post">#7527970</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7527970&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7527970&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>A short update: The WD 4005 selects the frequency from the 
+three frequencies specified above after inserting the batteries, on 
+which POCSAG messages are received. If you continuously send your own 
+time (address 0002504), this time is displayed a short time after the 
+batteries have been inserted.</p>
+<p>The "silicon revision" of the AXEM receiver is 0x86, which is one 
+below the value from the data sheet (0x87). I strongly believe it is the
+ AX50424.</p>
+<p>Then something about the "WETTERdirekt 300" variant: In the delivery 
+state, the "county list" is received after the time, from this you have 
+to select a county, then the associated weather data are received. The 
+devices also have a small I2C EEPROM (256 bytes) in which the county 
+list and the last received weather data are stored.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7527970#postform" onclick="return !forumInsertQuoting(7527970)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7527970#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7527970?token=7Y5kDHktEyWdAbrfRCLg3-jQLOAQur2Kqhe6xihKDX_79oIJmBxuXJQFfzTJKdVISY0Uguddj4ElGPIHjx9ylQ">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7527970" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1699090970000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7528906" class="post   post-userid-90808 post-id-7528906" data-attributionline="Dieter S. schrieb im Beitrag #7528906:" data-created-at="1699090970000" data-updated-at="1699090970000" data-user-id="90808" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #9a5a7d" aria-hidden="true">DS</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/ds1">Dieter S.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/ds1">(ds1)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-11-04T10:42:50+01:00" data-moz-translations-id="0">04.11.2023 10:42</time></span>
+    <a class="post-anchor" href="#7528906" aria-label="Link to this post">#7528906</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7528906&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7528906&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>The weather data for the "WETTERdirekt 50" variant come from 
+address 1208128, the time as already written by address 0002504. The 
+weather data comes in several parts, probably in three separate 
+messages.</p>
+<p>You can check this if you continuously send your own time and weather data, which are then displayed by the weather station.</p>
+<p>For testing, it is recommended to have an active outside temperature 
+sensor nearby, then the waiting time of 90 seconds for the reception of 
+the outside temperature data after the insert of the batteries is 
+eliminated. It then takes less than 30 seconds for your own data to be 
+displayed after inserting the batteries.</p>
+<p>The content of the weather data and whether they are actually encrypted I have to take a closer look.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7528906#postform" onclick="return !forumInsertQuoting(7528906)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7528906#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7528906?token=I4VqDJYy0qrdxy7-SFq13QHEXtEdTtH0dqHAbOkHGbw1_YwJdwOv09TD6xXFUYBKoJlms-qp4__5roitTlJmVg">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7528906" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1699102473000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7528987" class="post   post-userid-31917 post-id-7528987" data-attributionline="Michael M. schrieb im Beitrag #7528987:" data-created-at="1699102473000" data-updated-at="1699102547000" data-user-id="31917" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">MM</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/do7tla">Michael M.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/do7tla">(do7tla)</a>
+
+    <span class="post-badge" title="Thread Creator">OP</span>
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-11-04T13:54:33+01:00" data-moz-translations-id="0">04.11.2023 13:54</time></span>
+    <a class="post-anchor" href="#7528987" aria-label="Link to this post">#7528987</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7528987&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7528987&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p class="attribution-line"><a class="link-to-post" data-post-id="7520791" href="https://www.mikrocontroller.net/topic/goto_post/7520791">Dieter S. wrote:</a></p>
+<blockquote>
+<p>Here is a bit to the inner workings of the WD 4000:</p>
+<p><a href="https://www.all-electronics.de/wp-content/uploads/migrated/article-pdf/80423/ei08-06-080.pdf" class="postedlink" rel="nofollow" data-moz-translations-id="0">https://www.all-electronics.de/wp-content/uploads/migrated/article-pdf/80423/ei08-06-080.pdf</a></p>
+</blockquote>
+<p>From the linked article at the very end:</p>
+<blockquote>
+<p>As a processor is a
+4 bit processor 16 k from
+the 63rd family of
+Seiko with 16 K memory used,
+which directs the LCD graphic.</p>
+</blockquote>
+<p>With the Hack RF I can change the time as you like.</p>
+<p>RIC 0002504 Time and date
+RIC 1208128 Weather data (presumably encrypted)</p>
+<p>At the RIC 1208128 I will make several recordings and send them to the weather station.
+Then you can see if the symbols and temperature indications change.
+I had seemingly always sent the wrong RICs and wondered why nothing has ever changed.</p>
+<blockquote>
+<p>Then something more to the "WETTERdirekt 300" variant: With these becomes in
+Delivery status after the time receive the "County List",
+from this one has to choose a county, then the
+receive associated weather data. The devices also have one
+small I2C EEPROM (256 bytes) in which the county list and the last
+Stored received weather data.</p>
+</blockquote>
+<p>This prom is not stocked in me.
+You could look at its connections to see if anything arrives at all.
+It may also be that it is disabled in the processor because it is not used.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7528987#postform" onclick="return !forumInsertQuoting(7528987)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7528987#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7528987?token=K7IZPW6kid-TmSqi6LqWQBODZMNNdoLSAEpOFpdRcjo9yv84j5X0ppqd70llsaPXst5cobqRsNmPRQbXMAQN0A">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7528987" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1699103712000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7528992" class="post   post-userid-90808 post-id-7528992" data-attributionline="Dieter S. schrieb im Beitrag #7528992:" data-created-at="1699103712000" data-updated-at="1699103712000" data-user-id="90808" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #9a5a7d" aria-hidden="true">DS</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/ds1">Dieter S.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/ds1">(ds1)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-11-04T14:15:12+01:00" data-moz-translations-id="0">04.11.2023 14:15</time></span>
+    <a class="post-anchor" href="#7528992" aria-label="Link to this post">#7528992</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7528992&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7528992&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p class="attribution-line"><a class="link-to-post" data-post-id="7528987" href="https://www.mikrocontroller.net/topic/goto_post/7528987">Michael M. wrote:</a></p>
+<blockquote>
+<p>This prom is not stocked in me.
+You could see at his connections, whether there is anything
+arrive.
+It may also be that it is disabled in the processor because it is not
+used.</p>
+</blockquote>
+<p>I strongly assume that the firmware for the "WETTERdirekt 300" 
+variant is different than in the "WETTERdirekt 50" variant: Some of the 
+"WETTERdirekt 300" variants have a running font display in the display, 
+e.g. for the amount of rain, sunshine duration and the UV index. In 
+addition, no EEPROM is provided on the circuit board in the case of the 
+WD 4005 (“WETTERdirekt 50”).</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7528992#postform" onclick="return !forumInsertQuoting(7528992)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7528992#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7528992?token=OA7cLJyjWuxo973cuBA0Tu_sPwae51iqd_ZFrK1Tj8gudjopfZInlWHzeDc1GwHZTrEHZGkAaqH4-Q1tCgbwIg">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7528992" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1699294268000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7530354" class="post   post-userid-90808 post-id-7530354" data-attributionline="Dieter S. schrieb im Beitrag #7530354:" data-created-at="1699294268000" data-updated-at="1699294268000" data-user-id="90808" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #9a5a7d" aria-hidden="true">DS</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/ds1">Dieter S.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/ds1">(ds1)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-11-06T19:11:08+01:00" data-moz-translations-id="0">06.11.2023 19:11</time></span>
+    <a class="post-anchor" href="#7530354" aria-label="Link to this post">#7530354</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7530354&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7530354&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>Another short update, in the "WETTERdirekt 300" variant comes the county list of address 1208160.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7530354#postform" onclick="return !forumInsertQuoting(7530354)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7530354#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7530354?token=zT-qk-kGdI6fWPTe2TLNOyOE1QyrzikWrqqNOzlAiWXbR0yWCDcJ95ZcMTVUOfisgtntblwpGx0hpcX6nhX2jw">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7530354" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1699516324000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7532064" class="post   post-userid-90808 post-id-7532064" data-attributionline="Dieter S. schrieb im Beitrag #7532064:" data-created-at="1699516324000" data-updated-at="1699516324000" data-user-id="90808" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #9a5a7d" aria-hidden="true">DS</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/ds1">Dieter S.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/ds1">(ds1)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-11-09T08:52:04+01:00" data-moz-translations-id="0">09.11.2023 08:52</time></span>
+    <a class="post-anchor" href="#7532064" aria-label="Link to this post">#7532064</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7532064&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7532064&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>At address 1208184, the region is transmitted every few minutes in a short message (two characters).</p>
+<p>But there are also longer messages on this address, which could be 
+information about when certain messages are sent. In the "WETTERdirekt 
+300" version you can see quite well that there must be information about
+ the transmission time: When waiting for the weather, the receiver is 
+first switched on every 10 minutes for 90 seconds. After a while, 
+however, the receiver is absent and will only be turned on a few times 
+again for a short time when the weather data is sent.</p>
+<p>Whether the receiver is switched on is clearly visible by the current
+ consumption, which is then significantly higher at about 29 mA 
+(otherwise below 1 mA).</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7532064#postform" onclick="return !forumInsertQuoting(7532064)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7532064#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7532064?token=sLk2FIUIGc6HGWCL_C6sM8d1_0_yf4HGFb_0_5kM8OKmwdARZDlkt44dpWBxJZmkZijHLQWYs82asLw-PlmPCA">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7532064" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1702024324000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7554022" class="post   post-userid-1512 post-id-7554022" data-attributionline="David G. schrieb im Beitrag #7554022:" data-created-at="1702024324000" data-updated-at="1702024324000" data-user-id="1512" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">DG</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/pronet">David G.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/pronet">(pronet)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-12-08T09:32:04+01:00" data-moz-translations-id="0">08.12.2023 09:32</time></span>
+    <a class="post-anchor" href="#7554022" aria-label="Link to this post">#7554022</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7554022&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7554022&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p class="attribution-line"><a class="link-to-post" data-post-id="7527970" href="https://www.mikrocontroller.net/topic/goto_post/7527970">Dieter S. wrote:</a></p>
+<blockquote>
+<p>A short update: The WD 4005 selects the
+frequency from the three frequencies indicated above, on which
+POCSAG messages are received. When you continuously have your own
+Time (address 0002504) is sent a short time after entering the
+Batteries display this time.</p>
+<p>The "Silicon Revision" of the AXEM Receiver is 0x86, which is one under
+the value from the data sheet (0x87). I strongly assume that it the
+AX50424 is.</p>
+<p>Then something more to the "WETTERdirekt 300" variant: With these becomes in
+Delivery status after the time receive the "County List",
+from this one has to choose a county, then the
+receive associated weather data. The devices also have one
+small I2C EEPROM (256 bytes) in which the county list and the last
+Stored received weather data.</p>
+</blockquote>
+<p>Hi,</p>
+<p>Since I have been dealing with it all the time and now I have found a
+ WD4000 with soldered QFN28 after a long time, I could remove the epoxy 
+resin spot and find the name of the IC and its manufacturer.
+The receiver is actually a chip from e-Vision called EV5042-1
+I bought the AX50424 and soldered it. With that, the station no longer 
+makes a muck...
+Unfortunately, I have not yet found a data sheet for the EV5042-1.</p>
+<p>Maybe this info will help...</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7554022#postform" onclick="return !forumInsertQuoting(7554022)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7554022#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7554022?token=EIMu4Il7_RaCK3l7HXOjsfe-B2QLWxJSn2y5bODjAgQG-8jlaEqAb4svvJCQeJYmVuM_Bvy8IFkQY_GtR7Z97g">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7554022" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1702025366000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7554045" class="post   post-userid-90808 post-id-7554045" data-attributionline="Dieter S. schrieb im Beitrag #7554045:" data-created-at="1702025366000" data-updated-at="1702025366000" data-user-id="90808" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #9a5a7d" aria-hidden="true">DS</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/ds1">Dieter S.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/ds1">(ds1)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-12-08T09:49:26+01:00" data-moz-translations-id="0">08.12.2023 09:49</time></span>
+    <a class="post-anchor" href="#7554045" aria-label="Link zu diesem Beitrag">#7554045</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7554045&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7554045&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p class="attribution-line"><a class="link-to-post" data-post-id="7554022" href="https://www.mikrocontroller.net/topic/goto_post/7554022">David G. wrote:</a></p>
+<blockquote>
+<p>Maybe this info will help...</p>
+</blockquote>
+<p>This is probably the predecessor of the AXEM chip, according to which here:</p>
+<p><a href="http://www.aufzu.de/semi/evision.html" class="postedlink" rel="nofollow" data-moz-translations-id="0">http://www.aufzu.de/semi/evision.html</a></p>
+<p>"Das Unternehmen wurde im Jahr 2000 als e-vision Inc. von ehemaligen 
+Mitarbeitern von Philips Semiconductors gegründet. Im April 2007 folgte 
+eine Neugründung als AXSEM AG, um damit den Wechsel von einem Designhaus
+ zu einem Fabless-Semiconductor-Hersteller zu reflektieren. Im August 
+2015 wurde Axem von On Semiconductor übernommen."</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Antwort</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7554045#postform" onclick="return !forumInsertQuoting(7554045)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7554045#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7554045?token=W6pg2o2NhsJmgMNTTw8Rm0GUXbDwFeQNU0O0buy_3y1N0obfbLz7u2-EBrjCBCQM4Mll0gfy1gbcTPyvS-qgxw">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7554045" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1702040942000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7554329" class="post   post-userid-1512 post-id-7554329" data-attributionline="David G. schrieb im Beitrag #7554329:" data-created-at="1702040942000" data-updated-at="1702040942000" data-user-id="1512" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">DG</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/pronet">David G.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/pronet">(pronet)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-12-08T14:09:02+01:00">08.12.2023 14:09</time></span>
+    <a class="post-anchor" href="#7554329" aria-label="Link zu diesem Beitrag">#7554329</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7554329&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7554329&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p class="attribution-line"><a class="link-to-post" data-post-id="7554045" href="https://www.mikrocontroller.net/topic/goto_post/7554045">Dieter S. schrieb:</a></p>
+<blockquote>
+<p>Das ist dann vermutlich der Vorgänger des AXEM Chip, laut denen hier:</p>
+</blockquote>
+<p>Ja, oder der Nachfolger ist der AX5042-1...</p>
+<p><a href="https://www.mouser.de/datasheet/2/308/AX5042_D-1802384.pdf" class="postedlink" rel="nofollow">https://www.mouser.de/datasheet/2/308/AX5042_D-1802384.pdf</a></p>
+<blockquote>
+<p>Es werden ein paar Register angesprochen die nicht im Datenblatt stehen.</p>
+</blockquote>
+<p>Vielleicht sind ja in dem die Register drin, die angesprochen werden, aber im AX50424 fehlen...</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Antwort</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7554329#postform" onclick="return !forumInsertQuoting(7554329)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7554329#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7554329?token=N7sAAlXAj9a8JnLJyn5WUXl725SATN6cEGoUHKPrIKEhw-YHtPHyr7UityJHdWPG2Cbj9ner7JefZVzdBL5fSw">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7554329" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1702282469000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7556395" class="post   post-userid-1512 post-id-7556395" data-attributionline="David G. schrieb im Beitrag #7556395:" data-created-at="1702282469000" data-updated-at="1702282469000" data-user-id="1512" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">DG</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/pronet">David G.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/pronet">(pronet)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-12-11T09:14:29+01:00">11.12.2023 09:14</time></span>
+    <a class="post-anchor" href="#7556395" aria-label="Link zu diesem Beitrag">#7556395</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7556395&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7556395&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>Hi,</p>
+<p>@Dieter S.</p>
+<p>Can you log in if the outdoor thermometer is being paired?
+If you remove the batteries from the outdoor thermometer and reinstate them, no temperature is displayed.
+You have to remove the batteries from the station and use them again, only then it goes again...</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7556395#postform" onclick="return !forumInsertQuoting(7556395)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7556395#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7556395?token=_sr9CVFG7UTLCJvtB2VmXaPeWmmFWthW8hLecFQlw3ToshsMsHeQPcIMXgaKblPKAoNiC3K96l19HZax83C8ng">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7556395" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1702285629000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7556444" class="post   post-userid-90808 post-id-7556444" data-attributionline="Dieter S. schrieb im Beitrag #7556444:" data-created-at="1702285629000" data-updated-at="1702285629000" data-user-id="90808" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #9a5a7d" aria-hidden="true">DS</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/ds1">Dieter S.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/ds1">(ds1)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-12-11T10:07:09+01:00" data-moz-translations-id="0">11.12.2023 10:07</time></span>
+    <a class="post-anchor" href="#7556444" aria-label="Link zu diesem Beitrag">#7556444</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7556444&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7556444&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p class="attribution-line"><a class="link-to-post" data-post-id="7556395" href="https://www.mikrocontroller.net/topic/goto_post/7556395">David G. wrote:</a></p>
+<blockquote>
+<p>Can you log in if the outdoor thermometer is being paired?</p>
+</blockquote>
+<p>I have already briefly described this above. After the battery has 
+been inserted, a signal from the outside temperature sensor is waited 
+for at three frequencies, if none is received, then the outside 
+temperature sensor will no longer be taken into account later.</p>
+<p>When a signal has been received, it is regularly received at the corresponding frequency.</p>
+<p>Presumably, the reception of the outside temperature is completely 
+set when the signal is no longer coming, which makes sense because the 
+power consumption is very high when the receiver is switched on.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7556444#postform" onclick="return !forumInsertQuoting(7556444)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7556444#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7556444?token=4a7UpQqHUOaMk4aKMmQluHaVyIywu1hkQCI2YZ2HQqf31jKg67Ytn4WXQ2G_bxAv18jw7kdcam_PLX6gOtI9TQ">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7556444" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1702360179000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7557392" class="post   post-userid-1512 post-id-7557392" data-attributionline="David G. schrieb im Beitrag #7557392:" data-created-at="1702360179000" data-updated-at="1702360237000" data-user-id="1512" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #7a9a5a" aria-hidden="true">DG</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/pronet">David G.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/pronet">(pronet)</a>
+
+    
+
+
+
+    
+
+    <span class="post-time created"><time class="datetime" datetime="2023-12-12T06:49:39+01:00" data-moz-translations-id="0">12.12.2023 06:49</time></span>
+    <a class="post-anchor" href="#7557392" aria-label="Link to this post">#7557392</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7557392&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7557392&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p>Moin,</p>
+<p>Thanks for the info.</p>
+<p>I have a question about this encryption.
+We live in an area where the reception is not so good.
+If I make a recording with HackRF in the attic and play back near the 
+weather stations, all weather data will be updated.
+Do that. after the batteries have been inserted, the weather station is 
+completely filled with data. If I continue with the Hack RF 2 rooms, 
+sometimes only one day and the low and maximum temperatures are also 
+incorrectly updated.
+If all the stuff is encrypted, nothing should be decrypted with poor 
+reception, right?</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7557392#postform" onclick="return !forumInsertQuoting(7557392)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7557392#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7557392?token=X_HDdpqZy-deYSZNs4B5ZszE0ZoN9mf3ElNstYvcLLtJiSVze6i2nldl46Y-i0zxbZnp-PoRVfydXCR0LIlTUQ">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7557392" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+      <script>
+      if (!have_newpost_anchor && (!topic_last_read_at || topic_last_read_at < 1702361484000)) {
+        document.write('<a name="new" id="new"></a>');
+        have_newpost_anchor = true;
+      }
+      </script>
+
+      
+<article id="7557402" class="post   post-userid-13125 post-id-7557402" data-attributionline="Niklas G. schrieb im Beitrag #7557402:" data-created-at="1702361484000" data-updated-at="1702361484000" data-user-id="13125" data-guest-name="">
+
+  <div class="post-head">
+    <span class="avatar" style="background: #d9822b" aria-hidden="true">NG</span>
+
+      <a class="post-author" href="https://www.mikrocontroller.net/user/show/erlkoenig">Niklas G.</a>
+      <a class="post-account" href="https://www.mikrocontroller.net/user/show/erlkoenig">(Erlkoenig)</a>
+
+    
+
+
+
+    <a class="user-wikipage-link" href="https://www.mikrocontroller.net/articles/Benutzer:erlkoenig"><svg class="ui-icon ui-icon-userpage" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Persönliche Seite"><title>Persönliche Seite</title><rect x="3.5" y="2" width="9" height="12" rx="1.25"></rect><path d="M5.75 5.5h4.5"></path><path d="M5.75 8h4.5"></path><path d="M5.75 10.5h2.75"></path></svg></a>
+
+    <span class="post-time created"><time class="datetime" datetime="2023-12-12T07:11:24+01:00" data-moz-translations-id="0">12.12.2023 07:11</time></span>
+    <a class="post-anchor" href="#7557402" aria-label="Link to this post">#7557402</a>
+  </div>
+
+
+
+  <div class="post-vote-links noprint">
+  Lesenswert?
+  <table><tbody><tr>
+  <td><span class="score">•</span></td>
+  <td>
+  <a class="up" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7557402&amp;rating=1"><span class="arrow-down">▲</span>  <span class="num-up-votes"></span></a>
+  <br>
+  <a class="down" rel="nofollow" data-remote="true" data-method="post" href="https://www.mikrocontroller.net/topic/vote_post?id=7557402&amp;rating=-1"><span class="arrow-up">▼</span>  <span class="num-down-votes"></span></a>
+  </td>
+  </tr></tbody></table>
+  </div>
+
+  <div class="text">
+      <p class="attribution-line"><a class="link-to-post" data-post-id="7557392" href="https://www.mikrocontroller.net/topic/goto_post/7557392">David G. wrote:</a></p>
+<blockquote>
+<p>If all this stuff is encrypted, it should be with bad
+Reception nothing more decrypted, right?</p>
+</blockquote>
+<p>Not necessarily, depends on the procedure. With simple procedures, broken data is simply decrypted.</p>
+
+  </div>
+
+
+
+
+  <div class="foot unselectable">
+    <span class="menuitem postmenuitem-reply_without_quote"><a href="#postform" rel="nofollow">Answer</a></span> <span class="menuitem postmenuitem-insert_quoting"><a href="https://www.mikrocontroller.net/topic/464834?reply_to=7557402#postform" onclick="return !forumInsertQuoting(7557402)" title="Zitiert den markierten Text – oder den ganzen Beitrag, wenn nichts markiert ist" rel="nofollow">Zitieren</a></span> <span class="menuitem postmenuitem-edit"><a href="https://www.mikrocontroller.net/topic/464834?edit=7557402#postform" rel="nofollow">Bearbeiten</a></span> <span class="menuitem postmenuitem-delete"><a data-confirm="[dummy_value]" data-prompt="{&quot;message&quot;:&quot;Begründung für die Löschung (oder abbrechen um nicht zu löschen):&quot;,&quot;param&quot;:&quot;reason&quot;,&quot;default&quot;:&quot; &quot;}" data-remote="true" rel="nofollow" href="https://www.mikrocontroller.net/topic/delete_post/7557402?token=ctY5g5t4kI6DdHevxprICOhvYT5IJK5b2YEf3Y9pxgxkrt-Geknt94pwskRLkf2fSTJZXL_DnFBWjlccKDy55g">Löschen</a></span> <span class="menuitem postmenuitem-report"><a href="#" data-report-post-id="7557402" data-is-root="false" rel="nofollow">Beitrag melden</a></span>
+  </div>
+
+</article>
+
+
+
+
+
+    
+
+    <div class="topic-subscription noprint">
+      <a href="https://www.mikrocontroller.net/topic/subscribe/464834"><svg class="ui-icon ui-icon-watch" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.75 8S4.15 3.75 8 3.75 14.25 8 14.25 8 11.85 12.25 8 12.25 1.75 8 1.75 8Z"></path><circle cx="8" cy="8" r="1.9"></circle></svg> Watch Thread</a>
+
+
+    </div>
+        <a name="postform"></a>
+
+<h3 class="postform-heading">Write answer</h3>
+
+<div class="user">
+  <p class="notice">Please sign in to write a post.</p>
+  <div class="card user-form">
+  <p class="user-section-label">Existing Account</p>
+
+
+  <form action="/user/login" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="Gphg5cdfi-yJb684NkkmXjIpSF-liUe6aoLM-zlIMLQM4IbgJm72lYBratO7QhPJk3RwPVJudbHljYQ6nh1PXg" autocomplete="off">
+    <table>
+      <tbody><tr>
+        <td class="prompt"><label for="name">Username or email address</label></td>
+        <td class="value"><input type="text" name="name" id="name" autocomplete="username" autocapitalize="none" required="required"></td>
+      </tr>
+      <tr>
+        <td class="prompt"><label for="password">Password</label></td>
+        <td class="value"><input type="password" name="password" id="password" autocomplete="current-password" required="required"></td>
+      </tr>
+    </tbody></table>
+
+    <div class="user-button-row">
+      <input type="submit" value="Login" name="submit">
+      <input type="submit" class="user-button-quiet" value="Ich habe mein Passwort vergessen" name="i_forgot_my_password">
+    </div>
+
+</form>
+  <p class="user-alt-divider"><span>or</span></p>
+  <a class="user-button user-button-quiet" href="https://www.mikrocontroller.net/user/login_google?url=https%3A%2F%2Fwww.google.com%2Faccounts%2Fo8%2Fid">Log in with Google account</a>
+</div>
+
+<div class="card">
+  <p class="user-section-label">No account yet?</p>
+  <p class="user-note">Registration is free and takes only one minute.</p>
+  <a class="user-button user-button-quiet" href="https://www.mikrocontroller.net/user/register">Register now</a>
+</div>
+
+</div>
+
+
+
+  </div>
+</div>
+
+  </div>
+    <!-- google_ad_section_end -->
+    <!-- contentDetection end -->
+
+
+</div>
+
+  </td>
+<td id="sidebar-right">
+<div id="right-ad-div" style="padding: 0;" class="sticky">
+    <div class="ad-slot-label">Display</div>
+
+    <!-- /62616433/Mikrocontroller_Right_Sidebar_1 -->
+    <div id="div-gpt-ad-1549487225707-0" style="text-align:center;">
+    <script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1549487225707-0'); });
+    </script>
+    </div>
+</div>
+</td>
+  </tr>
+  </tbody></table>
+
+    <div id="bottom">
+  <div id="impress">
+    <a href="https://www.mikrocontroller.net/contact">Contact/Imprint</a> – <a href="https://www.mikrocontroller.net/articles/Datenschutzerkl%C3%A4rung">Privacy Policy</a> – <a href="https://www.mikrocontroller.net/user/conditions">Terms</a> of <a href="https://www.mikrocontroller.net/user/conditions">Use</a> – <a href="https://eetech.com/media/#mikrocontroller-net">Advertising on Mikrocontroller.net</a>
+  </div>
+ <a href="https://www.mikrocontroller.net/util/rb"><!-- nothing --></a>
+</div>
+
+</div> <!-- outer-container -->
+
+
+<script>
+$( document ).ready(function() {
+    if ($(window).width() < 768 && Math.random() < 0.2) {
+        $("#div-gpt-ad-1549487225707-0").prependTo("#content");
+    }
+});
+</script>
+
+
+
+
+<div class="highslide-container" style="padding: 0px; border: medium; margin: 0px; position: absolute; left: 0px; top: 0px; width: 100%; z-index: 1001; direction: ltr;"><a class="highslide-loading" title="Klick zum Abbrechen" href="javascript:;" style="position: absolute; top: -9999px; opacity: 0.75; z-index: 1;">Lade...</a><div style="display: none;"></div><table cellspacing="0" style="padding: 0px; border: medium; margin: 0px; visibility: hidden; position: absolute; border-collapse: collapse; width: 0px;"><tbody style="padding: 0px; border: medium; margin: 0px;"><tr style="padding: 0px; border: medium; margin: 0px; height: auto;"><td style="padding: 0px; border: medium; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.mikrocontroller.net/highslide/graphics/outlines/drop-shadow.png&quot;) 0px 0px; height: 20px; width: 20px;"></td><td style="padding: 0px; border: medium; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.mikrocontroller.net/highslide/graphics/outlines/drop-shadow.png&quot;) 0px -40px; height: 20px; width: 20px;"></td><td style="padding: 0px; border: medium; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.mikrocontroller.net/highslide/graphics/outlines/drop-shadow.png&quot;) -20px 0px; height: 20px; width: 20px;"></td></tr><tr style="padding: 0px; border: medium; margin: 0px; height: auto;"><td style="padding: 0px; border: medium; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.mikrocontroller.net/highslide/graphics/outlines/drop-shadow.png&quot;) 0px -80px; height: 20px; width: 20px;"></td><td style="padding: 0px; border: medium; margin: 0px; position: relative;" class="drop-shadow highslide-outline"></td><td style="padding: 0px; border: medium; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.mikrocontroller.net/highslide/graphics/outlines/drop-shadow.png&quot;) -20px -80px; height: 20px; width: 20px;"></td></tr><tr style="padding: 0px; border: medium; margin: 0px; height: auto;"><td style="padding: 0px; border: medium; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.mikrocontroller.net/highslide/graphics/outlines/drop-shadow.png&quot;) 0px -20px; height: 20px; width: 20px;"></td><td style="padding: 0px; border: medium; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.mikrocontroller.net/highslide/graphics/outlines/drop-shadow.png&quot;) 0px -60px; height: 20px; width: 20px;"></td><td style="padding: 0px; border: medium; margin: 0px; line-height: 0; font-size: 0px; background: url(&quot;https://www.mikrocontroller.net/highslide/graphics/outlines/drop-shadow.png&quot;) -20px -20px; height: 20px; width: 20px;"></td></tr></tbody></table></div></body></html>
