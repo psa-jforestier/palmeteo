@@ -149,5 +149,8 @@ PocsagMessagePanel.prototype.saveToFile = function()
 
 	URL.revokeObjectURL(url);
 }
-JSON.stringify(POCSAG);
 ```
+After copying and pasting this code in the JS console, you will see messages.
+
+When you want to dump the POCSAG messages : `JSON.stringify(POCSAG);` or `PocsagMessagePanel.prototype.saveToFile();`
+
