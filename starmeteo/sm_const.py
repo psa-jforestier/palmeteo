@@ -126,4 +126,4 @@ STARMETEO_ICONS = {
     0x23: {"text": "NUAGEUX A COUVERT, TEMPETE DE NEIGE", "icon": "0x23.png"},
 }
 
-print (STARMETEO_ICONS)
+print (STARMETEO_ICONS[0x23])
