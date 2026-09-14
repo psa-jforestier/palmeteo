@@ -13,10 +13,10 @@ $data = @$_REQUEST['data'];
 
 /**
 Sensor temperature
-http://weather.forestier.xyz/upload.php?data={"date":"2016-12-15 08:55:37","date_ts":1481788537,"sensorId":"33","temp":"19.90","hygro":"nan","info":0,"signal":687,"noise":3750}
+http://xxxz/upload.php?data={"date":"2016-12-15 08:55:37","date_ts":1481788537,"sensorId":"33","temp":"19.90","hygro":"nan","info":0,"signal":687,"noise":3750}
 
 Sensor rain
-http://weather.forestier.xyz/upload.php?data={"date":"2016-12-15 08:55:37","date_ts":1481788537,"sensorId":"33","rain_mm":"14.208", "rain_raw":64,"info":0,"signal":687,"noise":3750}
+http://xxx/upload.php?data={"date":"2016-12-15 08:55:37","date_ts":1481788537,"sensorId":"33","rain_mm":"14.208", "rain_raw":64,"info":0,"signal":687,"noise":3750}
 
 **/
 
