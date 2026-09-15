@@ -34,9 +34,9 @@ def om_geocode_city(city_name: str):
 
 def om_fetch_5day(lat: float, lon: float, timezone: str | None = None):
 
-    with open("data_om.json", "r", encoding="utf-8") as file:
-        data = json.load(file)
-        return data
+#    with open("data_om.json", "r", encoding="utf-8") as file:
+#        data = json.load(file)
+#        return data
 
     global VERBOSE
     url = "https://api.open-meteo.com/v1/forecast"
@@ -69,8 +69,8 @@ def om_fetch_5day(lat: float, lon: float, timezone: str | None = None):
     r = requests.get(url, params=params, timeout=30)
     r.raise_for_status()
     data = r.json()
-    with open("data_om.json", "w", encoding="utf-8") as file:
-        json.dump(data, file, indent=2, ensure_ascii=False)
+#    with open("data_om.json", "w", encoding="utf-8") as file:
+#        json.dump(data, file, indent=2, ensure_ascii=False)
     return data
 
 
