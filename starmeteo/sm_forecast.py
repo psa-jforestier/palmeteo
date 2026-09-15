@@ -32,7 +32,7 @@ def om_geocode_city(city_name: str):
     return best["latitude"], best["longitude"], best.get("timezone"), best.get("name")
 
 
-def om_fetch_5day(lat: float, lon: float, timezone: str | None = None):
+def om_fetch_5day(lat: float, lon: float, timezone: str):
 
 #    with open("data_om.json", "r", encoding="utf-8") as file:
 #        data = json.load(file)
@@ -285,12 +285,12 @@ def main():
         print("== FORECAST ==")
         for i in forecast:
             print('== ',i['date'])
-            print(f'    T min : {i['tmin']:+03d} | T max : {i['tmax']:+03d}')
-            print(f'    Day : {i['weathercode_day']['label']} | Night : {i['weathercode_night']['label']} | Rain : {i['rain']}')
+            print(f"    T min : {i['tmin']:+03d} | T max : {i['tmax']:+03d}")
+            print(f"    Day : {i['weathercode_day']['label']} | Night : {i['weathercode_night']['label']} | Rain : {i['rain']}")
     elif (args.output == "csv"):
         print("date;tmin;tmax;weather_code_day;picto_day;label_day;weather_code_night;picto_night;label_night;rain")
         for i in forecast:
-            print(f'{i['date']};{i['tmin']};{i['tmax']};{i['weathercode_day']['weather_code']};{i['weathercode_day']['picto']};{i['weathercode_day']['label']};{i['weathercode_night']['weather_code']};{i['weathercode_night']['picto']};{i['weathercode_night']['label']};{i['rain']};')
+            print(f"{i['date']};{i['tmin']};{i['tmax']};{i['weathercode_day']['weather_code']};{i['weathercode_day']['picto']};{i['weathercode_day']['label']};{i['weathercode_night']['weather_code']};{i['weathercode_night']['picto']};{i['weathercode_night']['label']};{i['rain']};")
     elif (args.output == "starmeteo"):
         # printf("%s -forecast:[LowTemp],[HighTemp],[MainPicto_Hex],[Picto_2_Hex],[Picto_3_Hex],[Picto_4_Hex],[Picto_5_Hex]\n",argv[0]);
         smout = ""
