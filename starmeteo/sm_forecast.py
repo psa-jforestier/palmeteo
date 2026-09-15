@@ -231,9 +231,15 @@ def main():
         help="Enable debug output")
 
     parser.add_argument("--backend", "-b",
-        help="Indicates which weather forecast backend to use. Can be \"openmeteo\", \"weatherunderground\", or \"none\"",
-        choices=["weatherunderground", "wu", "openmeteo", "om", "none"],
+        help="Indicates which weather forecast backend to use. Can be \"openmeteo\", \"weatherunderground\", or \"none\" or \"file\" followed by a file path.",
+        #choices=["weatherunderground", "wu", "openmeteo", "om", "file", "none"],
+        nargs="+", # one or two value (for file backend)
+        metavar=("BACKEND", "FILE"),
         default="none"
+    )
+    parser.add_argument("--days", "-d", type=int,
+        help="Number of forcast days. Default is 6",
+        default="6"
     )
     parser.add_argument("--location", "-l",
         help="Indicates the location to get weather for (eg : \"Paris, France\")",
@@ -254,9 +260,25 @@ def main():
         help="Weather Underground API key (required when --backend=weatherunderground).")
 
     args = parser.parse_args()
-
     VERBOSE = args.verbose
-
+    filename = None
+    if args.backend[0] == "file": # the file backned has an extra argument, the path to the file
+        if len(args.backend) != 2:
+            parser.error("the file backend requires a file path")
+        filename = args.backend[1]
+        args.backend = args.backend[0]
+    elif len(args.backend) != 1:
+        parser.error("a file path is only valid with the file backend")
+    elif args.backend[0] not in {
+        "weatherunderground",
+        "wu",
+        "openmeteo",
+        "om",
+        "none",
+    }:
+        parser.error(f"invalid backend: {args.backend[0]}")   
+    else:
+        args.backend = args.backend[0]
     if args.backend == "wu":
         args.backend = "weatherunderground"
     if args.backend == "om":
@@ -273,10 +295,15 @@ def main():
         forecast = get_weatherunderground(args.verbose, args.location, args.latlong, args.wu_api)
     elif args.backend == "none":
         forecast = get_local_forecast(args.verbose, args)
+    elif args.backend == "file":
+        debug(VERBOSE, f"Get info from file {filename}")
+        with open(filename, "r", encoding="utf-8") as file:
+            forecast = json.load(file)
     else:
         error("Wrong backend")
         return (2)
-        
+    
+    forecast = forecast[:args.days] # keep only days requested
     debug(VERBOSE, "Forecast :")
     debug(VERBOSE, forecast)
     if (args.output == "json"):
@@ -286,7 +313,8 @@ def main():
         for i in forecast:
             print('== ',i['date'])
             print(f"    T min : {i['tmin']:+03d} | T max : {i['tmax']:+03d}")
-            print(f"    Day : {i['weathercode_day']['label']} | Night : {i['weathercode_night']['label']} | Rain : {i['rain']}")
+            print(f"    Day   : {i['weathercode_day']['label']:<16} | Night : {i['weathercode_night']['label']:<16}   | Rain : {i['rain']}")
+            print(f"    Night : {i['weathercode_q0']['label']:<16} | Morning : {i['weathercode_q1']['label']:<16} | Afternoon : {i['weathercode_q2']['label']:<16} | Evening : {i['weathercode_q3']['label']:<16} " )
     elif (args.output == "csv"):
         print("date;tmin;tmax;weather_code_day;picto_day;label_day;weather_code_night;picto_night;label_night;rain")
         for i in forecast:
@@ -295,8 +323,12 @@ def main():
         # printf("%s -forecast:[LowTemp],[HighTemp],[MainPicto_Hex],[Picto_2_Hex],[Picto_3_Hex],[Picto_4_Hex],[Picto_5_Hex]\n",argv[0]);
         smout = ""
         for i in forecast:
-            smout = smout + f"-forecast:{i['tmin']},{i['tmax']},0x1,0x1,0x1,0x1,0x1" # todo continuer avec les pictos, pas tres clair
-            smout = smout + " "
+            smout = smout + (
+                f"-forecast:{i['tmin']},{i['tmax']},"
+                f"{i['weathercode_day']['picto']:#x},"
+                f"{i['weathercode_q0']['picto']:#x},{i['weathercode_q1']['picto']:#x},"
+                f"{i['weathercode_q2']['picto']:#x},{i['weathercode_q3']['picto']:#x}"
+             ) + " "
         print(smout)
 if __name__ == "__main__":
     main()
